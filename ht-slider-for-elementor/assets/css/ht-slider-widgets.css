@@ -220,7 +220,7 @@
 	  z-index: 2;
 	}
 	.htslider-postslider-area button.slick-arrow svg{
-		width: 24px;
+		width: 12px;
 	}
 	.htslider-postslider-area button.slick-arrow svg path{
 		fill: #00282a;
@@ -570,7 +570,7 @@
 		text-decoration: none;
 		text-indent: -999999px;
 		border: none;
-		background: transparent;
+		background: #ddd;
 		line-height: 0;
 	}
 	.htslider-postslider-area.pagination  ul.slick-dots li button {
@@ -723,6 +723,9 @@
 	text-align: center;
 
 	opacity: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	border: 1px solid #E1E1E1;

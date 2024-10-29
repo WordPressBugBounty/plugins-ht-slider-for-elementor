@@ -1,6 +1,6 @@
 <?php
 namespace Elementor;
-
+use Elementor\Icons_Manager;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Htslider_Elementor_Widget_Sliders extends Widget_Base {
@@ -141,7 +141,7 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                     'type'          => Controls_Manager::ICONS,
                     'default'       => [
                         'value'     => 'fas fa-angle-left',
-                        'library'   => 'solid',
+                        'library'   => 'fa-solid',
                     ],
                 ]
             );
@@ -153,7 +153,7 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                     'type'          => Controls_Manager::ICONS,
                     'default'       => [
                         'value'     => 'fas fa-angle-right',
-                        'library'   => 'solid',
+                        'library'   => 'fa-solid',
                     ]
                 ]
             );
@@ -365,7 +365,16 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                     'default' => 480,
                 ]
             );
-
+            $this->add_control(
+                'hide_preloader',
+                [
+                    'label' => esc_html__( 'Hide Preloader', 'ht-slider' ),
+                    'type' => Controls_Manager::SWITCHER,
+                    'return_value' => 'yes',
+                    'separator' => 'before',
+                    'default' => 'no'
+                ]
+            );
         $this->end_controls_section(); // Slider Option end
 
         // Slider Button stle
@@ -697,8 +706,6 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
         // Slider Options
         $slider_settings = [
             'arrows' => ('yes' === $settings['slarrows']),
-            'arrow_prev_txt' => HTSliders_Icons_managers::render_icon( $settings['slprevicon'], [ 'aria-hidden' => 'true' ] ),
-            'arrow_next_txt' => HTSliders_Icons_managers::render_icon( $settings['slnexticon'], [ 'aria-hidden' => 'true' ] ),
             'dots' => ('yes' === $settings['sldots']),
             'autoplay' => ('yes' === $settings['slautolay']),
             'autoplay_speed' => absint($settings['slautoplay_speed']),
@@ -728,7 +735,7 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
         // Slider Area attribute
         $this->add_render_attribute( 'slider_area_attr', 'class', 'htslider-slider-area' );
         $this->add_render_attribute( 'slider_area_attr', 'class', 'navigation-style-'.$settings['slider_navigation_style'] );
-        if ( !\Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+        if ( 'yes' !== $settings['hide_preloader'] && !\Elementor\Plugin::$instance->editor->is_edit_mode() ) {
             $this->add_render_attribute( 'slider_area_attr', 'class', 'loading' );
         }
 
@@ -758,7 +765,16 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                     <?php endforeach; ?>
                 </div>
                 <?php if( $settings['slider_navigation_style'] != 1 ){ echo '<div class="hero-slider-controls htslider-controls-area-'.esc_attr($id).'"></div>'; } ?>
+                <?php if ( ! empty( $settings['slprevicon']['value'] ) ) : ?>
+                    <button type="button" class="slick-prev" style="display:none"><?php Icons_Manager::render_icon( $settings['slprevicon'], ['aria-hidden' => 'true'] ); ?></button>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $settings['slnexticon']['value'] ) ) : ?>
+                    <button type="button" class="slick-next" style="display:none"><?php Icons_Manager::render_icon( $settings['slnexticon'], ['aria-hidden' => 'true'] ); ?></button>
+                <?php endif; ?>
             </div>
+
+
 
         <?php
     }

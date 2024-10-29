@@ -4,13 +4,10 @@
     var WidgetHtSliderHandler = function ($scope, $) {
 
         var slider_elem = $scope.find('.htslider-slider').eq(0);
-
         if ( slider_elem.length > 0) {
 
             var settings = slider_elem.data('settings');
             var arrows = settings['arrows'];
-            var arrow_prev_txt = settings['arrow_prev_txt'];
-            var arrow_next_txt = settings['arrow_next_txt'];
             var dots = settings['dots'];
             var autoplay = settings['autoplay'];
             var autoplay_speed = parseInt(settings['autoplay_speed']) || 3000;
@@ -30,8 +27,8 @@
 
             slider_elem.slick({
                 arrows: arrows,
-                prevArrow: '<button type="button" class="slick-prev">'+arrow_prev_txt+'</button>',
-                nextArrow: '<button type="button" class="slick-next">'+arrow_next_txt+'</button>',
+                prevArrow: $('<div />').append($scope.find('.slick-prev').clone().show()).html(),
+                nextArrow: $('<div />').append($scope.find('.slick-next').clone().show()).html(),
                 dots: dots,
                 infinite: true,
                 autoplay: autoplay,
@@ -95,10 +92,7 @@
 
 
         };
-
-        setTimeout(function() {
-            $('.htslider-slider-area.loading').removeClass('loading');
-        }, 100)
+        $('.htslider-slider-area.loading').removeClass('loading');
     };
     
     // Run this code under Elementor.

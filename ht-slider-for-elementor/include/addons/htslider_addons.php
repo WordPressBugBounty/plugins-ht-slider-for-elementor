@@ -1,6 +1,6 @@
 <?php
 namespace Elementor;
-
+use Elementor\Icons_Manager;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
@@ -511,6 +511,25 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
                     ]
                 );
             $this->end_popover();
+
+            $this->add_responsive_control(
+                'slider_height_for_initial_load', 
+                [
+                    'label' => esc_html__( 'Minimum Height', 'ht-slider' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'description' => esc_html__( 'Add the expected height for slider initial load', 'ht-slider' ),
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1200,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-carousel-activation' => 'height: {{SIZE}}px',
+                    ],
+                ]
+            );
+
             $this->add_responsive_control(
                 'column_gap',
                 [
@@ -530,6 +549,7 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
                     ],
                 ]
             );
+            
             $this->add_control(
                 'slarrows',
                 [
@@ -569,7 +589,7 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
                     'type'          => Controls_Manager::ICONS,
                     'default'       => [
                         'value'     => 'fas fa-angle-left',
-                        'library'   => 'solid',
+                        'library'   => 'fa-solid',
                     ],
                     'condition'     => [
                         'slider_on' => 'yes',
@@ -585,7 +605,7 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
                     'type'          => Controls_Manager::ICONS,
                     'default'       => [
                         'value'     => 'fas fa-angle-right',
-                        'library'   => 'solid',
+                        'library'   => 'fa-solid',
                     ],
                     'condition'     => [
                         'slider_on' => 'yes',
@@ -1428,7 +1448,7 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
                     ],
                     'default'   => [
                         'unit'  => 'px',
-                        'size'  => 20,
+                        'size'  => '',
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .htslider-postslider-area button.slick-arrow' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -2048,8 +2068,6 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
 
             $slider_settings = [
                 'arrows' => ('yes' === $settings['slarrows']),
-                'arrow_prev_txt' => HTSliders_Icons_managers::render_icon( $settings['slprevicon'], [ 'aria-hidden' => 'true' ] ),
-                'arrow_next_txt' => HTSliders_Icons_managers::render_icon( $settings['slnexticon'], [ 'aria-hidden' => 'true' ] ),
                 'dots' => ('yes' === $settings['sldots']),
                 'autoplay' => ('yes' === $settings['slautolay']),
                 'autoplay_speed' => absint($settings['slautoplay_speed']),
@@ -2087,10 +2105,10 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
         $html_title_tag = $settings['title_html_tag'];
         $html_subtitle_tag = $settings['subtitle_html_tag'];
 
-        $s_display_none = ' style="display:none;"';
+        $s_display_none = ' style="visibility:hidden;"';
     ?>
 
-        <div <?php echo $this->get_render_attribute_string( 'htslider_post_slider_attr' ) . esc_attr($s_display_none); ?>>
+        <div <?php echo $this->get_render_attribute_string( 'htslider_post_slider_attr' ) . $s_display_none; ?>>
             <?php if( $settings['content_sourse']=='1'): 
 
                 foreach ($settings['sliders_list'] as $item ): 
@@ -2136,6 +2154,15 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
             <?php endforeach; ?>
             <?php endif; ?>
         </div>
+        <?php if ( $settings['slarrows'] == 'yes' ) : ?>
+            <?php if ( ! empty( $settings['slprevicon']['value'] ) ) : ?>
+                <button type="button" class="htslider-carosul-prev" style="display:none"><?php Icons_Manager::render_icon( $settings['slprevicon'], ['aria-hidden' => 'true'] ); ?></button>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $settings['slnexticon']['value'] ) ) : ?>
+                <button type="button" class="htslider-carosul-next" style="display:none"><?php Icons_Manager::render_icon( $settings['slnexticon'], ['aria-hidden' => 'true'] ); ?></button>
+            <?php endif; ?>
+		<?php endif; ?>
         <?php
     }
 

@@ -1,6 +1,6 @@
 <?php
 namespace Elementor;
-
+use Elementor\Icons_Manager;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
@@ -385,6 +385,23 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
             );
         $this->end_popover();
         $this->add_responsive_control(
+            'slider_height_for_initial_load', 
+            [
+                'label' => esc_html__( 'Minimum Height', 'ht-slider' ),
+                'type' => Controls_Manager::SLIDER,
+                'description' => esc_html__( 'Add the expected height for slider initial load', 'ht-slider' ),
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1200,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .htslider-carousel-activation' => 'height: {{SIZE}}px',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
             'column_gap',
             [
                 'label' => esc_html__( 'Column Gap', 'ht-slider' ),
@@ -442,7 +459,7 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
                     'type'          => Controls_Manager::ICONS,
                     'default'       => [
                         'value'     => 'fas fa-angle-left',
-                        'library'   => 'solid',
+                        'library'   => 'fa-solid',
                     ],
                     'condition'     => [
                         'slider_on' => 'yes',
@@ -458,7 +475,7 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
                     'type'          => Controls_Manager::ICONS,
                     'default'       => [
                         'value'     => 'fas fa-angle-right',
-                        'library'   => 'solid',
+                        'library'   => 'fa-solid',
                     ],
                     'condition'     => [
                         'slider_on' => 'yes',
@@ -1567,7 +1584,7 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
                 ],
                 'default'   => [
                     'unit'  => 'px',
-                    'size'  => 20,
+                    'size'  => '',
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .htslider-postslider-area button.slick-arrow' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -2156,7 +2173,7 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
         $exclude_posts = $settings['exclude_posts'];
 
 
-        $s_display_none = ' style="display:none;"';
+        $s_display_none = ' style="visibility:hidden;"';
         if ( $settings['slpagination']=='yes' ) {
 
         $this->add_render_attribute( 'htslider_post_slider_attr', 'class', 'htslider-postslider-area pagination  htslider-dot-index-yes htslider-postslider-style-1' );
@@ -2173,8 +2190,6 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
 
             $slider_settings = [
                 'arrows' => ('yes' === $settings['slarrows']),
-                'arrow_prev_txt' => HTSliders_Icons_managers::render_icon( $settings['slprevicon'], [ 'aria-hidden' => 'true' ] ),
-                'arrow_next_txt' => HTSliders_Icons_managers::render_icon( $settings['slnexticon'], [ 'aria-hidden' => 'true' ] ),
                 'dots' => ('yes' === $settings['sldots']),
                 'autoplay' => ('yes' === $settings['slautolay']),
                 'autoplay_speed' => absint($settings['slautoplay_speed']),
@@ -2307,8 +2322,17 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
             endif; ?>
 
             </div>
+            <?php if ( $settings['slarrows'] == 'yes' ) : ?>
 
-        <?php
+                <?php if ( ! empty( $settings['slprevicon']['value'] ) ) : ?>
+                    <button type="button" class="htslider-carosul-prev" style="display:none"><?php Icons_Manager::render_icon( $settings['slprevicon'], ['aria-hidden' => 'true'] ); ?></button>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $settings['slnexticon']['value'] ) ) : ?>
+                    <button type="button" class="htslider-carosul-next" style="display:none"><?php Icons_Manager::render_icon( $settings['slnexticon'], ['aria-hidden' => 'true'] ); ?></button>
+                <?php endif; ?>
+            <?php endif; ?>
+            <?php
 
     }
 

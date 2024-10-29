@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, zenaulislam, aslamhasib, tarekh
 Tags: Slider, Elementor, Widgets, Post type slider, Elementor Addons
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.5.7
+Stable tag: 1.5.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -203,6 +203,15 @@ HT Slider allows you to design and customize banner sliders that can effectively
 
 
 == Changelog ==
+
+= Version: 1.5.8 - Date: 2024-10-29 =
+
+* Added: Option to enable/disable the preloader in HT Slider Widgets.
+* Added: Option to set a minimum height for the slider area during the initial load in HT Advanced and HT Post Slider Widgets.
+* Fixed: Initial loading issue in HT Advanced and HT Post Slider Widgets.
+* Fixed: SVG icons not loading.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
 
 = Version: 1.5.7 - Date: 2024-08-26 =
 

@@ -6,11 +6,8 @@
 
         var carousel_elem = $scope.find( '.htslider-carousel-activation' ).eq(0);
         if ( carousel_elem.length > 0 ) {
-            carousel_elem[0].style.display='block';
             var settings = carousel_elem.data('settings');
             var arrows = settings['arrows'];
-            var arrow_prev_txt = settings['arrow_prev_txt'];
-            var arrow_next_txt = settings['arrow_next_txt'];
             var dots = settings['dots'];
             var autoplay = settings['autoplay'];
             var autoplay_speed = parseInt(settings['autoplay_speed']) || 3000;
@@ -32,8 +29,8 @@
             if( carousel_style_ck == 4 ){
                 carousel_elem.slick({
                     arrows: arrows,
-                    prevArrow: '<button class="htslider-carosul-prev">'+arrow_prev_txt+'</button>',
-                    nextArrow: '<button class="htslider-carosul-next">'+arrow_next_txt+'</button>',
+                    prevArrow: $('<div />').append($scope.find('.htslider-carosul-prev').clone().show()).html(),
+                    nextArrow: $('<div />').append($scope.find('.htslider-carosul-next').clone().show()).html(),
                     dots: dots,
                     customPaging: function( slick,index ) {
                         var data_title = slick.$slides.eq(index).find('.htslider-data-title').data('title');
@@ -66,12 +63,15 @@
                             }
                         }
                     ]
+                }).css({
+                    visibility: 'visible', 
+                    'height': 'initial'
                 });
             }else{
                 carousel_elem.slick({
                     arrows: arrows,
-                    prevArrow: '<button class="htslider-carosul-prev">'+arrow_prev_txt+'</button>',
-                    nextArrow: '<button class="htslider-carosul-next">'+arrow_next_txt+'</button>',
+                    prevArrow: $('<div />').append($scope.find('.htslider-carosul-prev').clone().show()).html(),
+                    nextArrow: $('<div />').append($scope.find('.htslider-carosul-next').clone().show()).html(),
                     dots: dots,
                     infinite: true,
                     autoplay: autoplay,
@@ -101,7 +101,11 @@
                         }
                     ]
                     
+                }).css({
+                    visibility: 'visible', 
+                    'height': 'initial'
                 });
+
             }
 
 

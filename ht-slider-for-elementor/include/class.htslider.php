@@ -246,7 +246,6 @@ final class HTSlider_Addons_Elementor {
         require_once HTSLIDER_PL_INCLUDE. '/admin/recommendation-plugins.php' ;
         require_once HTSLIDER_PL_INCLUDE. '/admin/template-library.php' ;
         require_once HTSLIDER_PL_INCLUDE.'/helpers_function.php';
-        require_once HTSLIDER_PL_INCLUDE.'/htslider_icon_manager.php';
         require_once HTSLIDER_PL_INCLUDE.'/custom-post-type.php';
         require_once HTSLIDER_PL_INCLUDE.'/shortcode/htslider-shortcode.php';
     }
