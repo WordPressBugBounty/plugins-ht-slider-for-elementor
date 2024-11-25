@@ -144,11 +144,73 @@
             }
         }
     }
-    
+    /*======= Scroll Navigation Activation ========*/
+    var WidgetNavigationScrollHandler = function ($scope, $) {
+        
+        var swiper_elem = $scope.find('.swiper-container').eq(0);
+        var swiper_opt = swiper_elem.data('settings');
+        if( !swiper_elem[0] ){
+            return;
+        }
+
+        // var tablet_width = parseInt( swiper_opt.tablet_width );
+        // var mobile_width = parseInt( swiper_opt.mobile_width );
+        //var swiper = new Swiper( swiper_elem, { for verson 5.6
+        var swiper = new Swiper(swiper_elem[0], { // for js version 8.0.3
+            direction: swiper_opt.direction,
+            slidesPerView: swiper_opt.slideitem,
+            initialSlide: swiper_opt.initialslide,
+            spaceBetween: 0,
+            simulateTouch:swiper_opt.simulateTouch,
+            mousewheel: {
+                releaseOnEdges:true,
+            },
+            speed: swiper_opt.speed,
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            keyboard: {
+                enabled: swiper_opt.keyboardscroll,
+                onlyInViewport: false,
+            },
+            // breakpoints: {
+            //     [tablet_width]: {
+            //       direction: swiper_opt.tablet_direction,
+            //     },
+            //     [mobile_width]: {
+            //         direction: swiper_opt.mobile_direction,
+            //       },
+
+            //   }
+        });
+
+        if( swiper_opt.mousewheel == false){
+            swiper.mousewheel.disable();
+        }
+        if( true == swiper_opt.slide_custom_menu ) {
+        $('a[href^="#htslider-scroll-slide"]').on('click', function (e) {
+            e.preventDefault();
+
+            var fullIndex = $(this).attr('href');
+            var slideIndex = parseInt(fullIndex.replace('#htslider-scroll-slide-',''), 0);
+            if( fullIndex !== slideIndex && slideIndex > 0 ){
+                swiper.slideTo(slideIndex-1); 
+            }
+          });
+        }
+    }
+
+
     // Run this code under Elementor.
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction( 'frontend/element_ready/htslider-postslider-addons.default', WidgetHtsliderCarouselHandler);
         elementorFrontend.hooks.addAction( 'frontend/element_ready/htsliderpro-addons.default', WidgetHtsliderCarouselHandler);
+        elementorFrontend.hooks.addAction( 'frontend/element_ready/htslider-scrollnavigation-addons.default', WidgetNavigationScrollHandler);
 
     });
 

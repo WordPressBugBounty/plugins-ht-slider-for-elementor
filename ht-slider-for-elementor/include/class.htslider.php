@@ -211,7 +211,8 @@ final class HTSlider_Addons_Elementor {
         wp_enqueue_style('htslider-widgets', HTSLIDER_PL_ASSETS . 'css/ht-slider-widgets.css', '', HTSLIDER_VERSION );
 
         // Register Style
-        wp_register_style( 'slick', HTSLIDER_PL_ASSETS . 'css/slick.min.css', array(), HTSLIDER_VERSION );
+        wp_register_style( 'slick', HTSLIDER_PL_ASSETS . 'css/slick.min.css', [], HTSLIDER_VERSION );
+        wp_register_style( 'swiper', HTSLIDER_PL_ASSETS . 'css/swiper.min.css', [], HTSLIDER_VERSION );
     }
     public function elementor_editor_css(){
         wp_enqueue_style('htslider-elementor-editor', HTSLIDER_PL_ASSETS . 'css/htslider-elementor-editor.css', '', HTSLIDER_VERSION );
@@ -219,9 +220,10 @@ final class HTSlider_Addons_Elementor {
     public function plugin_js(){
         // Script register
 
-        wp_register_script( 'slick', HTSLIDER_PL_ASSETS . 'js/slick.min.js', array('jquery'), HTSLIDER_VERSION, TRUE );
-        wp_register_script( 'htslider-active', HTSLIDER_PL_ASSETS . 'js/active.js', array('slick'), HTSLIDER_VERSION, TRUE );
-        wp_register_script( 'htslider-widget-active', HTSLIDER_PL_ASSETS . 'js/htslider-widgets.js', array('slick'), HTSLIDER_VERSION, TRUE );
+        wp_register_script( 'slick', HTSLIDER_PL_ASSETS . 'js/slick.min.js', ['jquery'], HTSLIDER_VERSION, TRUE );
+        wp_register_script( 'swiper', HTSLIDER_PL_ASSETS . 'js/swiper.min.js', [], HTSLIDER_VERSION, TRUE );
+        wp_register_script( 'htslider-active', HTSLIDER_PL_ASSETS . 'js/active.js', ['slick'], HTSLIDER_VERSION, TRUE );
+        wp_register_script( 'htslider-widget-active', HTSLIDER_PL_ASSETS . 'js/htslider-widgets.js', [], HTSLIDER_VERSION, TRUE );
     }
 
     public function init_widgets() {
@@ -230,12 +232,14 @@ final class HTSlider_Addons_Elementor {
         include( HTSLIDER_PL_INCLUDE.'/addons/elementor_widgets.php' );
         include( HTSLIDER_PL_INCLUDE.'/addons/htslider_addons.php' );
         include( HTSLIDER_PL_INCLUDE.'/addons/htslider_post_addons.php' );
+        include( HTSLIDER_PL_INCLUDE.'/addons/htslider_scroll_navigation.php' );
 
         if ( get_post_type() !== 'htslider_slider' ) {
         // Register widget
         htslider_widget_register_manager( new \Elementor\Htslider_Elementor_Widget_Sliders() );
         htslider_widget_register_manager( new \Elementor\Htsliderpro_Elementor_Widget_Sliders() );
         htslider_widget_register_manager( new \Elementor\HTSlider_Elementor_Widget_Post_Slider() );
+        htslider_widget_register_manager( new \Elementor\HTSlider_Elementor_Widget_Scroll_Navigation() );
         }
 
     }

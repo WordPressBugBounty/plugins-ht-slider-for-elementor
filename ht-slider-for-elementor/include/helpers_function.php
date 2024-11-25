@@ -165,7 +165,7 @@ function htslider_pro_notice( $element, $condition_key, $array_value, $type ){
                 __('Upgrade to pro version to use this feature %1$s Pro Version %2$s', 'ht-slider'),
                 '<strong><a href="https://hasthemes.com/plugins/ht-slider-pro-for-elementor/" target="_blank">',
                 '</a></strong>'),
-            'content_classes' => 'htslider-addons-notice',
+            'content_classes' => 'ht-slider-notice',
             'condition' => [
                 $condition_key => $array_value,
             ]
@@ -255,13 +255,13 @@ if( ! function_exists( 'htslider_get_authors_list' ) ) {
 }
 
 
-    /**
-     * [render_build_content]
-     * @param  [int]  $id
-     * @return string
-     */
+/**
+ * [render_build_content]
+ * @param  [int]  $id
+ * @return string
+ */
 
-     if( ! function_exists( 'htslider_render_build_content' ) ) {
+    if( ! function_exists( 'htslider_render_build_content' ) ) {   
     function htslider_render_build_content( $id ){
 
             $output = '';
@@ -288,5 +288,50 @@ if( ! function_exists( 'htslider_get_authors_list' ) ) {
 
             return $output;
 
+    }
+}
+/*
+ * Elementor Templates List
+ * return array
+ */
+if( !function_exists('htslider_elementor_template') ){
+    function htslider_elementor_template( $args = [] ) {
+        if( class_exists('\Elementor\Plugin') ){
+
+            $template_instance = \Elementor\Plugin::instance()->templates_manager->get_source( 'local' );
+            
+            $defaults = [
+                'post_type' => 'elementor_library',
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+                'orderby' => 'title',
+                'order' => 'ASC',
+                'meta_query' => [
+                    [
+                        'key' => '_elementor_template_type',
+                        'value' => $template_instance::get_template_types()
+                    ],
+                ],
+            ];
+            $query_args = wp_parse_args( $args, $defaults );
+
+            $templates_query = new \WP_Query( $query_args );
+
+            $templates = [];
+            if ( $templates_query->have_posts() ) {
+                $templates = [ '0' => __( 'Select Template', 'ht-slider' ) ];
+                foreach ( $templates_query->get_posts() as $post ) {
+                    $templates[$post->ID] = $post->post_title . '(' . $template_instance::get_template_type( $post->ID ). ')';
+                }
+            }else{
+                $templates = [ '0' => esc_html__( 'No saved templates found!', 'ht-slider' ) ];
+            }
+            wp_reset_postdata();
+
+            return $templates;
+
+        }else{
+            return array( '0' => esc_html__( 'No saved templates found!', 'ht-slider' ) );
         }
+    }
 }

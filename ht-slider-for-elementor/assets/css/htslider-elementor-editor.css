@@ -21,7 +21,33 @@
   line-height: 1.5;
   border-left: 5px solid skyblue;
 }
+.ht-slider-notice {
+  font-size: 12px;
+  line-height: 16px;
+  background: #b3e7db78;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  border-left: 5px solid #03A9F4;
+  color: #202020;
+}
 
+.ht-slider-notice a {
+  color: #fff !important;
+  background: #D73361;
+  padding: 4px 10px;
+  display: inline-block;
+  margin: 6px;
+  border-radius: 3px;
+  font-size: 10px;
+}
+.ht-slider-notice a:hover {
+  color: #fff;
+}
+.htmega-disable-control i.eicon-pro-icon {
+  color: #D73361;
+  font-size: 14px;
+}
 .htslider-disable-control .elementor-control-input-wrapper{
   pointer-events: none !important;
   opacity: 0.4;
