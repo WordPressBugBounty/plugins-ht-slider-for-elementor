@@ -13,7 +13,7 @@ The HT Slider is an Elementor slider plugin that enables you to add advanced sli
 
 **[HT Slider](https://hasthemes.com/plugins/ht-slider-pro-for-elementor/)** For Elementor is a WordPress slider builder plugin for the popular **Elementor page builder and Gutenberg block editor**. It empowers you to effortlessly create and customize sliders using a drag-and-drop interface within the Elementor.
 
-With its user-friendly features, you can easily create a variety of stunning WordPress sliders and carousels like **image sliders, video sliders, post slider carousels, product carousels, and more.**
+With its user-friendly features, you can easily create a variety of stunning WordPress sliders and carousels like **image sliders, video sliders, post slider carousels, product carousels, scroll navigation slider and more.**
 
 The plugin also offers a wide range of custom styling options to tailor your sliders, including slider **navigation and pagination.** You can also control how your sliders appear on different devices.
 
@@ -39,6 +39,7 @@ With [HT Slider](https://hasthemes.com/plugins/ht-slider-pro-for-elementor/), yo
 * Slider Pagination on/off Option.
 * Pagination position (Bottom Center, Bottom Left, Bottom Right, Right Center, Left Center, and Custom with Offset X and Y).
 * Slider Autoplay on/off Option.
+* Scroll Navigation Slider
 
 == 🔥 Pro Features: ==
 
@@ -85,6 +86,11 @@ Elementor Slider widgets are versatile tools designed to enhance the visual stor
 Whether you need an image slider for your Elementor-powered website or want to showcase your latest blog posts using an Elementor posts slider, HT Slider has got you covered. With its intuitive interface and seamless integration with Elementor, this plugin allows you to effortlessly design and manage captivating sliders and carousel sliders that engage your audience and elevate the visual appeal of your website
 
 Whether you are an experienced designer or a beginner, this tool enables you to craft attractive sliders with dynamic content. Besides, if you want to adorn your WooCommerce site with stunning eCommerce slider, this drag drop slider builder plugin can come in handy as you can add a product slider, category slider, hero slider, and various other media sliders. By using HT Slider, you can effectively engage your audience and make your website more engaging and visually appealing.
+
+==▶️ Video Tutorial==
+How to create a full screen scroll navigation slider:
+
+[youtube https://youtu.be/uEuoDI9E2m4]
 
 ==Benefits of HT Slider Plugin for Elementor==
 
