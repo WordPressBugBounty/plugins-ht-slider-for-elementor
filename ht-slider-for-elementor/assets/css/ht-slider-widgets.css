@@ -995,3 +995,35 @@
 .elementor-widget-htslider-scrollnavigation-addons .swiper-slide:nth-child(3) .htslider-scroll-navigation-inner {
 	background-color: #2ECC71;
 }
+
+/* Progress Bar Styles */
+.htslider-slider-area {
+    position: relative;
+}
+
+.htslider-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    background: #f1f1f1;
+}
+
+.htslider-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: #0056ff;
+    transition: width 0.3s ease;
+}
+
+.htslider-progress-top.htslider-progress {
+    top: 0;
+}
+
+.htslider-progress-bottom.htslider-progress {
+    bottom: 0;
+}

@@ -25,6 +25,7 @@
             var mobile_scroll_columns = parseInt(settings['mobile_scroll_columns']) || 1;
             var carousel_style_ck = parseInt( settings['carousel_style_ck'] ) || 1;
             var carousel_rtl = $('html').attr('dir') === 'rtl' ? true : false;
+            var progressBar = settings['progress_bar'] ? settings['progress_bar'] : false;
 
             if( carousel_style_ck == 4 ){
                 carousel_elem.slick({
@@ -142,6 +143,54 @@
                     });
                 });
             }
+
+            if (progressBar && autoplay) {
+                var $progressBar = carousel_elem.siblings('.htslider-progress').find('.htslider-progress-bar');
+                var time = autoplay_speed;
+                var isPaused = false;
+            
+                function startProgressBar() {
+                    if (isPaused) return;
+                    resetProgressBar();
+                    $progressBar.css({
+                        width: '100%',
+                        transition: 'width ' + time + 'ms linear'
+                    });
+                }
+            
+                function resetProgressBar() {
+                    $progressBar.css({
+                        width: 0,
+                        transition: 'width 0s'
+                    });
+                }
+
+                // Initialize progress bar
+                startProgressBar();
+            
+                // Attach event handlers to slick events
+                carousel_elem.on('beforeChange', function() {
+                    resetProgressBar();
+                });
+            
+                carousel_elem.on('afterChange', function() {
+                    startProgressBar();
+                });
+            
+                if (pause_on_hover) {
+                    carousel_elem.on('mouseenter', function() {
+                        isPaused = true;
+                        $progressBar.css('transition', 'none');
+                    }).on('mouseleave', function() {
+                        isPaused = false;
+                        var remainingTime = time * (1 - $progressBar.width() / $progressBar.parent().width());
+                        $progressBar.css({
+                            transition: 'width ' + remainingTime + 'ms linear',
+                            width: '100%'
+                        });
+                    });
+                }
+            }
         }
     }
     /*======= Scroll Navigation Activation ========*/
@@ -184,7 +233,7 @@
             //     },
             //     [mobile_width]: {
             //         direction: swiper_opt.mobile_direction,
-            //       },
+            //       }
 
             //   }
         });

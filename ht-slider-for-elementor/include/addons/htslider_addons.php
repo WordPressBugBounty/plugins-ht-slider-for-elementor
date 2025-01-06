@@ -760,7 +760,103 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
             );
 
         $this->end_controls_section(); // Slider Option end
+        // Progress Bar Settings
+        $this->start_controls_section(
+            'htslider_progress_bar_section',
+                [
+                    'label' => esc_html__( 'Progress Bar', 'ht-slider' ),
+                    'condition' => [
+                        'slider_on' => 'yes',
+                        'slautolay' => 'yes',
+                    ],
+                ]
+            );
 
+            $this->add_control(
+                'slider_progress_bar',
+                [
+                    'label' => esc_html__( 'Progress Bar', 'ht-slider' ),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => esc_html__( 'Show', 'ht-slider' ),
+                    'label_off' => esc_html__( 'Hide', 'ht-slider' ),
+                    'return_value' => 'yes',
+                    'default' => 'no',
+                ]
+            );
+
+            $this->add_control(
+                'progress_bar_position',
+                [
+                    'label' => esc_html__( 'Position', 'ht-slider' ),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'bottom',
+                    'options' => [
+                        'top' => esc_html__( 'Top', 'ht-slider' ),
+                        'bottom' => esc_html__( 'Bottom', 'ht-slider' ),
+                    ],
+                    'condition' => [
+                        'slider_progress_bar' => 'yes',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'progress_bar_height',
+                [
+                    'label' => esc_html__( 'Height', 'ht-slider' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px' ],
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 20,
+                            'step' => 1,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => 3,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-progress' => 'height: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'slider_progress_bar' => 'yes',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'progress_bar_background',
+                [
+                    'label' => esc_html__( 'Background Color', 'ht-slider' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#f1f1f1',
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-progress' => 'background-color: {{VALUE}};',
+                    ],
+                    'condition' => [
+                        'slider_progress_bar' => 'yes',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'progress_bar_color',
+                [
+                    'label' => esc_html__( 'Progress Color', 'ht-slider' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#0056ff',
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-progress-bar' => 'background-color: {{VALUE}};',
+                    ],
+                    'condition' => [
+                        'slider_progress_bar' => 'yes',
+                    ],
+                ]
+            );
+
+        $this->end_controls_section();
         // Style Slider arrow style start
         $this->start_controls_section(
             'slider_style_control',
@@ -2076,6 +2172,8 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
                 'center_mode' => ( 'yes' === $settings['slcentermode']),
                 'center_padding' => absint($settings['slcenterpadding']),
                 //'carousel_style_ck' => absint( $settings['post_slider_layout'] ),
+                'progress_bar' => ('yes' === $settings['slider_progress_bar']),
+                'progress_bar_position' => $settings['progress_bar_position'],
             ];
 
             $slider_responsive_settings = [
@@ -2154,6 +2252,11 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
             <?php endforeach; ?>
             <?php endif; ?>
         </div>
+        <?php if($settings['slider_progress_bar'] == 'yes' && $settings['slautolay'] == 'yes'): ?>
+                <div class="htslider-progress htslider-progress-<?php echo esc_attr($settings['progress_bar_position']); ?>">
+                    <div class="htslider-progress-bar"></div>
+                </div>
+            <?php endif; ?>
         <?php if ( $settings['slarrows'] == 'yes' ) : ?>
             <?php if ( ! empty( $settings['slprevicon']['value'] ) ) : ?>
                 <button type="button" class="htslider-carosul-prev" style="display:none"><?php Icons_Manager::render_icon( $settings['slprevicon'], ['aria-hidden' => 'true'] ); ?></button>

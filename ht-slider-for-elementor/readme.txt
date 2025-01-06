@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, zenaulislam, aslamhasib, tarekh
 Tags: Slider, Elementor, Widgets, Post type slider, Elementor Addons
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -210,15 +210,18 @@ HT Slider allows you to design and customize banner sliders that can effectively
 
 == Changelog ==
 
-= Version: 1.6.0 - Date: 2024-11-25 =
+= Version: 1.6.1 - Date: 2025-01-06 =
+* Added: Loading Progress Bar for HT Advanced Slider Widget
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
 
+= Version: 1.6.0 - Date: 2024-11-25 =
 * Added: HT Scroll Navigation Slider Widgets.
 * Fixed: A few minor issues.
 * Tested: Compatibility with the latest version of Elementor.
 * Tested: Compatibility with the latest version of WordPress.
 
 = Version: 1.5.8 - Date: 2024-10-29 =
-
 * Added: Option to enable/disable the preloader in HT Slider Widgets.
 * Added: Option to set a minimum height for the slider area during the initial load in HT Advanced and HT Post Slider Widgets.
 * Fixed: Initial loading issue in HT Advanced and HT Post Slider Widgets.
@@ -227,14 +230,12 @@ HT Slider allows you to design and customize banner sliders that can effectively
 * Tested: Compatibility with the latest version of Elementor.
 
 = Version: 1.5.7 - Date: 2024-08-26 =
-
 * Added: Option to adjust the Slider column gap in all HT Slider Widgets
 * Fixed: Issue with adding Center Padding in the HT Advanced Slider and HT Posts Slider Widgets
 * Fixed: A few minor issues
 * Tested: Compatibility with the latest version of Elementor
 
 = Version: 1.5.6 - Date: 2024-07-30 =
-
 * Added: Option to hide Empty Thumbnail Post in HT Posts Slider Widget
 * Added: Option to choose between post content or post excerpt for the slide description in the HT Posts Slider Widget
 * Fixed: Issue with adding custom link attributes in the HT Advanced Slider Widget
@@ -243,27 +244,22 @@ HT Slider allows you to design and customize banner sliders that can effectively
 * Tested: Compatibility with the latest version of Elementor
 
 = Version: 1.5.5 - Date: 2024-06-25 =
-
 * Fixed: RTL issue in HT Slider Widget.
 
 = Version: 1.5.4 - Date: 2024-05-02 =
-
 * Added: Gutenberg block editor support in slide template
 * Added: Shortcode for Gutenberg block page ([htslider])
 * Tested: Compatibility with the latest version of Elementor
 
 = Version: 1.5.3 - Date: 2024-04-03 =
-
 * Fixed: Escaping issues have been resolved in multiple areas.
 
 = Version: 1.5.2 - Date: 2024-02-29 =
-
 * Added: Content Box Styles option in HT Advanced Slider Widget
 * Fixed: A few minor issues
 * Tested: Compatibility with the latest version of Elementor
 
 = Version: 1.5.1 - Date: 2023-08-29 =
-
 * Added: Title, Sub Title and Content Color options in HT Advanced Slider Widget
 * Fixed: Elementor Deprecated issues
 * Fixed: A few minor issues
@@ -314,7 +310,7 @@ HT Slider allows you to design and customize banner sliders that can effectively
 * Arrow Button Overlapping Problem Solve
 
 = Version: 1.3.2 - Date: 2022-03-31 =
-* Capability with the latest WordPress version
+* Capability with latest WordPress version
 * Update Template Library Demo Link
 * Update Template Library Demo API Content
 * Update README Text Demo Link
