@@ -116,22 +116,22 @@
             if ($sliderArea.length) {
                 $sliderArea.each(function () {
                     var $this = $(this),
-                        $singleSlideElem = $this.find('.slick-slide .elementor-widget-wrap .elementor-element');
+                        $singleSlideElem = $this.find('.slick-slide .elementor-widget-wrap .elementor-element, .slick-slide .e-con-inner .elementor-element, .slick-slide .e-con .elementor-element');
                     function $slideElemAnimation() {
                         $singleSlideElem.each(function () {
                             var $this = $(this),
                                 $thisSetting = $this.data('settings') ? $this.data('settings') : '',
                                 $animationName = $thisSetting._animation,
                                 $animationDelay = $thisSetting._animation_delay;
-                            $this.removeClass('animated ' + $animationName).addClass('animated fadeOut');
+                            $this.removeClass('animated ' + $animationName).css('display', 'none').addClass('animated')
                             if($this.closest('.slick-slide').hasClass('slick-current')) {
                                 $this.removeClass('animated fadeOut').addClass('animated ' + $animationName).css({
-                                    'animation-delay': $animationDelay+'s'
+                                    'animation-delay': $animationDelay+'s','display':'block'
                                 });
                             }
                         });
                     }
-                    $slideElemAnimation();
+                    //$slideElemAnimation();
                     $this.on('afterChange', function(slick, currentSlide){
                         $slideElemAnimation();
                     });
