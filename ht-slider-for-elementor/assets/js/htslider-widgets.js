@@ -124,9 +124,9 @@
                                 $animationName = $thisSetting._animation,
                                 $animationDelay = $thisSetting._animation_delay;
                             $this.removeClass('animated ' + $animationName).css('display', 'none').addClass('animated')
-                            if($this.closest('.slick-slide').hasClass('slick-current')) {
+                            if($this.closest('.slick-slide').hasClass('slick-current') || $this.closest('.slick-slide').hasClass('slick-active')) {
                                 $this.removeClass('animated fadeOut').addClass('animated ' + $animationName).css({
-                                    'animation-delay': $animationDelay+'s','display':'block'
+                                    'animation-delay': $animationDelay+'s','display':''
                                 });
                             }
                         });
