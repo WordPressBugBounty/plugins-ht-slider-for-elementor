@@ -392,14 +392,69 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                     'label' => esc_html__( 'Slider Navigation Style', 'ht-slider' ),
                     'type' => Controls_Manager::SELECT,
                     'default' => '1',
-                    'options' => [
-                        '1'  => __( 'Style One', 'ht-slider' ),
-                        '2'  => __( 'Style Two', 'ht-slider' ),
-                        '3'  => __( 'Style Three', 'ht-slider' ),
+                    'options'   => [
+                        '1'     => esc_html__( 'Default', 'ht-slider' ),
+                        '2'     => esc_html__( 'Right Center', 'ht-slider' ),
+                        '3'     => esc_html__( 'Bottom Left', 'ht-slider' ),
+                        '4'     => esc_html__( 'Custom Position (Pro)', 'ht-slider' ),
                     ],
                 ]
             );
-
+            htslider_pro_notice( $this,'slider_navigation_style', '4', Controls_Manager::RAW_HTML );
+            $this->add_responsive_control(
+                'post_slider_arrow_inner_space',
+                [
+                    'label' => __( 'Inner Gap', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px','%'],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 500,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => '',
+                    ],
+                    'condition'     =>[
+                        'slider_navigation_style' => ['2','3'],
+                    ],
+                    'classes' => 'htslider-disable-control',
+                ]
+            );
+            $this->add_responsive_control(
+                'slider_arrow_position_X',
+                [
+                    'label' => __( 'Offset X', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', '%' ],
+                    'range' => [
+                        'px' => [
+                            'min' => -1000,
+                            'max' => 1000,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => -100,
+                            'max' => 100,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'px',
+                        'size' => '',
+                    ],
+                    'condition'     =>[
+                        'slider_navigation_style!' => '4',
+                    ],
+                    'classes' => 'htslider-disable-control',
+                ]
+            );
             $this->start_controls_tabs('ht-slider_sliderbtn_style_tabs');
 
                 // Slider Button style Normal
@@ -409,19 +464,10 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                         'label' => __( 'Normal', 'ht-slider' ),
                     ]
                 );
-
-                    $this->add_control(
-                        'button_style_heading',
-                        [
-                            'label' => __( 'Navigation Arrow', 'ht-slider' ),
-                            'type' => Controls_Manager::HEADING,
-                        ]
-                    );
-
                     $this->add_control(
                         'nav_size',
                         [
-                            'label' => __( 'Navigation Arrow Size', 'ht-slider' ),
+                            'label' => __( 'Arrow Size', 'ht-slider' ),
                             'type' => Controls_Manager::SLIDER,
                             'size_units' => [ 'px' ],
                             'range' => [
@@ -436,11 +482,61 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                                 'size' => 22,
                             ],
                             'selectors' => [
-                                '{{WRAPPER}} .htslider-slider button i' => 'font-size: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .htslider-slider button i,
+                                {{WRAPPER}} .slick-arrow i' => 'font-size: {{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} .slick-arrow svg' => 'width: {{SIZE}}{{UNIT}};',
                             ],
                         ]
                     );
-
+                    $this->add_responsive_control(
+                        'slider_arrow_height',
+                        [
+                            'label' => esc_html__( 'Height', 'ht-slider' ) . ' <i class="eicon-pro-icon"></i>',
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 1000,
+                                    'step' => 1,
+                                ],
+                                '%' => [
+                                    'min' => 0,
+                                    'max' => 100,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => '',
+                            ],
+                            'classes' => 'htslider-disable-control'
+                        ]
+                    );
+        
+                    $this->add_responsive_control(
+                        'slider_arrow_width',
+                        [
+                            'label' => esc_html__( 'Width', 'ht-slider' ) . ' <i class="eicon-pro-icon"></i>',
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px', '%' ],
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 1000,
+                                    'step' => 1,
+                                ],
+                                '%' => [
+                                    'min' => 0,
+                                    'max' => 100,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => '',
+                            ],
+                            'classes' => 'htslider-disable-control'
+                        ]
+                    );
                     $this->add_control(
                         'button_color',
                         [
@@ -452,6 +548,7 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                                 '{{WRAPPER}} .htslider-slider .slick-arrow i' => 'color: {{VALUE}};',
                                 '{{WRAPPER}} .hero-slider-controls .slick-arrow i' => 'color: {{VALUE}};',
                                 '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-arrow' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .htslider-slider .slick-arrow svg path' => 'fill: {{VALUE}};',
                             ],
                         ]
                     );
@@ -489,7 +586,14 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                             ],
                         ]
                     );
-
+                    $this->add_group_control(
+                        Group_Control_Box_Shadow::get_type(),
+                        [
+                            'name' => 'slider_arrow_boxshadow',
+                            'label' => __( 'Box Shadow', 'ht-slider' ),
+                            'selector' => '{{WRAPPER}} button.slick-arrow',
+                        ]
+                    );
                     $this->add_responsive_control(
                         'button_padding',
                         [
@@ -503,48 +607,6 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                         ]
                     );
 
-                    $this->add_control(
-                        'button_style_dots_heading',
-                        [
-                            'label' => __( 'Navigation Dots', 'ht-slider' ),
-                            'type' => Controls_Manager::HEADING,
-                        ]
-                    );
-
-                        $this->add_control(
-                            'dots_bg_color',
-                            [
-                                'label' => __( 'Background Color', 'ht-slider' ),
-                                'type' => Controls_Manager::COLOR,
-                                'default' =>'#ffffff',
-                                'selectors' => [
-                                    '{{WRAPPER}} .htslider-slider .slick-dots li button' => 'background-color: {{VALUE}} !important;',
-                                    '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button' => 'background-color: {{VALUE}} !important;',
-                                ],
-                            ]
-                        );
-
-                        $this->add_group_control(
-                            Group_Control_Border::get_type(),
-                            [
-                                'name' => 'dots_border',
-                                'label' => __( 'Border', 'ht-slider' ),
-                                'selector' => '{{WRAPPER}} .htslider-slider .slick-dots li button,{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button',
-                            ]
-                        );
-
-                        $this->add_responsive_control(
-                            'dots_border_radius',
-                            [
-                                'label' => esc_html__( 'Border Radius', 'ht-slider' ),
-                                'type' => Controls_Manager::DIMENSIONS,
-                                'selectors' => [
-                                    '{{WRAPPER}} .htslider-slider .slick-dots li button' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
-                                    '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
-                                ],
-                            ]
-                        );
-
                 $this->end_controls_tab();// Normal button style end
 
                 // Button style Hover
@@ -554,14 +616,6 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                         'label' => __( 'Hover', 'ht-slider' ),
                     ]
                 );
-
-                    $this->add_control(
-                        'button_style_arrow_heading',
-                        [
-                            'label' => __( 'Navigation', 'ht-slider' ),
-                            'type' => Controls_Manager::HEADING,
-                        ]
-                    );
 
                     $this->add_control(
                         'button_hover_color',
@@ -574,6 +628,7 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                                 '{{WRAPPER}} .htslider-slider .slick-arrow:hover i' => 'color: {{VALUE}};',
                                 '{{WRAPPER}} .hero-slider-controls .slick-arrow:hover i' => 'color: {{VALUE}};',
                                 '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-arrow:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .htslider-slider .slick-arrow:hover svg path' => 'fill: {{VALUE}};',
                             ],
                         ]
                     );
@@ -611,57 +666,392 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                             ],
                         ]
                     );
-
-
-                    $this->add_control(
-                        'button_style_dotshov_heading',
+                    $this->add_group_control(
+                        Group_Control_Box_Shadow::get_type(),
                         [
-                            'label' => __( 'Navigation Dots', 'ht-slider' ),
-                            'type' => Controls_Manager::HEADING,
+                            'name' => 'slider_arrow_hover_boxshadow',
+                            'label' => __( 'Box Shadow', 'ht-slider' ),
+                            'selector' => '{{WRAPPER}} .slick-arrow:hover',
                         ]
                     );
-
-                        $this->add_control(
-                            'dots_hover_bg_color',
-                            [
-                                'label' => __( 'Background Color', 'ht-slider' ),
-                                'type' => Controls_Manager::COLOR,
-                                'default' =>'#282828',
-                                'selectors' => [
-                                    '{{WRAPPER}} .htslider-slider .slick-dots li button:hover' => 'background-color: {{VALUE}} !important;',
-                                    '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button:hover' => 'background-color: {{VALUE}} !important;',
-                                    '{{WRAPPER}} .htslider-slider .slick-dots li.slick-active button' => 'background-color: {{VALUE}} !important;',
-                                    '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li.slick-active button' => 'background-color: {{VALUE}} !important;',
-                                ],
-                            ]
-                        );
-
-                        $this->add_group_control(
-                            Group_Control_Border::get_type(),
-                            [
-                                'name' => 'dots_border_hover',
-                                'label' => __( 'Border', 'ht-slider' ),
-                                'selector' => '{{WRAPPER}} .htslider-slider .slick-dots li button:hover,{{WRAPPER}}.htslider-slider-area .hero-slider-controls .slick-dots li button:hover',
-                            ]
-                        );
-
-                        $this->add_responsive_control(
-                            'dots_border_radius_hover',
-                            [
-                                'label' => esc_html__( 'Border Radius', 'ht-slider' ),
-                                'type' => Controls_Manager::DIMENSIONS,
-                                'selectors' => [
-                                    '{{WRAPPER}} .htslider-slider .slick-dots li button:hover' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
-                                    '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button:hover' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
-                                ],
-                            ]
-                        );
-
                 $this->end_controls_tab();// Hover button style end
 
             $this->end_controls_tabs();
 
         $this->end_controls_section(); // Tab option end
+        $this->start_controls_section(
+            'post_slider_pagination_style_section',
+            [
+                'label'         => esc_html__( 'Pagination', 'ht-slider' ),
+                'tab'           => Controls_Manager::TAB_STYLE,
+                'condition'     =>[
+                    'sldots'    =>'yes',
+                ]
+            ]
+        );
+            
+            //pagination postition
+            $this->add_control(
+                'pagination_position',
+                [
+                    'label' => esc_html__( 'Pagination Position', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                    'type' => Controls_Manager::POPOVER_TOGGLE,
+                ]
+            );
+            $this->start_popover();
+            $this->add_control(
+                'dot_show_position',
+                [
+                    'label' => esc_html__( 'Dots Show In', 'ht-slider' ),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'dot_bottom_center',
+                    'options' => [
+                        'dot_bottom_center' => esc_html__( 'Bottom Center (Pro)', 'ht-slider' ),
+                        'dot_bottom_left' => esc_html__( 'Bottom Left (Pro)', 'ht-slider' ),
+                        'dot_bottom_right' => esc_html__( 'Bottom Right (Pro)', 'ht-slider' ),
+                        'dot_right_center' => esc_html__( 'Right Center (Pro)', 'ht-slider' ),
+                        'dot_left_center' => esc_html__( 'Left Center (Pro)', 'ht-slider' ),
+                        'dot_custom' => esc_html__( 'Custom Position (Pro)', 'ht-slider' ),
+                    ],                
+                ]
+            );
+
+            $this->add_responsive_control(
+                    'pagination_x_position',
+                    [
+                        'label' => esc_html__( 'Horizontal Position', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                        'type'  => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' => [
+                            'size' => 50,
+                            'unit' => '%',
+                        ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+
+                        'condition'     =>[
+                            'dot_show_position' => 'dot_custom',
+                        ],
+                        'classes' => 'htslider-disable-control',
+                    ]
+                );
+
+                $this->add_responsive_control(
+                    'pagination_y_position',
+                    [
+                        'label' => esc_html__( 'Vertical Position', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                        'type'  => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' => [
+                            'size' => 92,
+                            'unit' => '%',
+                        ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        'condition'     =>[
+                            'dot_show_position' => 'dot_custom',
+                        ],
+                        'classes' => 'htslider-disable-control',
+                    ]
+                );
+                $this->add_responsive_control(
+                    'carousel_dots_offset',
+                    [
+                        'label' => __( 'Offset X', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'range' => [
+                            'px' => [
+                                'min' => -1000,
+                                'max' => 1000,
+                                'step' => 1,
+                            ],
+                            '%' => [
+                                'min' => -100,
+                                'max' => 100,
+                            ],
+                        ],
+                        'default' => [
+                            'unit' => 'px',
+                            'size' => '',
+                        ],
+                        'condition'     =>[
+                            'dot_show_position!' => ['dot_custom','dot_bottom_center'],
+                        ],
+                        'classes' => 'htslider-disable-control',
+                    ]
+                );
+                $this->add_responsive_control(
+                    'carousel_dots_offset_y',
+                    [
+                        'label' => __( 'Offset Y', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'range' => [
+                            'px' => [
+                                'min' => -1000,
+                                'max' => 1000,
+                                'step' => 1,
+                            ],
+                            '%' => [
+                                'min' => -100,
+                                'max' => 100,
+                            ],
+                        ],
+                        'default' => [
+                            'unit' => 'px',
+                            'size' => '',
+                        ],
+                        'condition'     =>[
+                            'dot_show_position' => ['dot_bottom_left','dot_bottom_right','dot_bottom_center'],
+                        ],
+                        'classes' => 'htslider-disable-control',
+                    ]
+                );
+                $this->add_responsive_control(
+                    'carousel_dots_pagination_inner_space',
+                    [
+                        'label' => __( 'Inner Gap', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 200,
+                                'step' => 1,
+                            ],
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        'default' => [
+                            'unit' => 'px',
+                            'size' => '',
+                        ],
+                        'classes' => 'htslider-disable-control',
+                    ]
+                );
+            $this->end_popover();
+
+            $this->add_responsive_control(
+                'slider_pagination_padding',
+                [
+                    'label'      => esc_html__( 'Padding', 'ht-slider' ),
+                    'type'       => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em' ],
+                    'selectors'  => [
+                        '{{WRAPPER}} .htslider-postslider-area ul.slick-dots li button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'separator' =>'before',
+                ]
+            );
+
+            $this->add_responsive_control(
+                'pagination_margin',
+                [
+                    'label'         => esc_html__( 'Margin', 'ht-slider' ),
+                    'type'          => Controls_Manager::DIMENSIONS,
+                    'size_units'    => [ 'px', '%', 'em' ],
+                    'selectors'     => [
+                        '{{WRAPPER}} .htslider-postslider-area .slick-dots li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'separator' => 'after',
+                ]
+            );
+            $this->start_controls_tabs('pagination_style_tabs',[
+                'separator' => 'before',
+            ]);
+
+                $this->start_controls_tab(
+                    'pagination_style_normal_tab',
+                    [
+                        'label' => esc_html__( 'Normal', 'ht-slider' ),
+                    ]
+                );
+                
+                $this->add_control(
+                    'dots_bg_color',
+                    [
+                        'label' => __( 'Background Color', 'ht-slider' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' =>'#ffffff',
+                        'selectors' => [
+                            '{{WRAPPER}} .htslider-slider .slick-dots li button' => 'background-color: {{VALUE}} !important;',
+                            '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button' => 'background-color: {{VALUE}} !important;',
+                        ],
+                    ]
+                );
+
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'dots_border',
+                        'label' => __( 'Border', 'ht-slider' ),
+                        'selector' => '{{WRAPPER}} .htslider-slider .slick-dots li button,{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button',
+                    ]
+                );
+
+                $this->add_responsive_control(
+                    'dots_border_radius',
+                    [
+                        'label' => esc_html__( 'Border Radius', 'ht-slider' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'selectors' => [
+                            '{{WRAPPER}} .htslider-slider .slick-dots li button' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
+                            '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
+                        ],
+                    ]
+                );
+                    $this->add_responsive_control(
+                        'htslider_carousel_dots_height',
+                        [
+                            'label' => __( 'Height', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                            'type' => Controls_Manager::SLIDER,
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 200,
+                                    'step' => 1,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => '',
+                            ],
+                            'classes' => 'htslider-disable-control',
+                        ]
+                    );
+        
+                    $this->add_responsive_control(
+                        'htslider_carousel_dots_width',
+                        [
+                            'label' => __( 'Width', 'ht-slider' )  . ' <i class="eicon-pro-icon"></i>',
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px'],
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 200,
+                                    'step' => 1,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => '',
+                            ],
+                            'classes' => 'htslider-disable-control',
+                        ]
+                    );
+                $this->end_controls_tab(); // Normal Tab end
+
+                $this->start_controls_tab(
+                    'pagination_style_active_tab',
+                    [
+                        'label' => esc_html__( 'Active', 'ht-slider' ),
+                    ]
+                );
+                $this->add_control(
+                    'dots_hover_bg_color',
+                    [
+                        'label' => __( 'Background Color', 'ht-slider' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' =>'#282828',
+                        'selectors' => [
+                            '{{WRAPPER}} .htslider-slider .slick-dots li button:hover' => 'background-color: {{VALUE}} !important;',
+                            '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button:hover' => 'background-color: {{VALUE}} !important;',
+                            '{{WRAPPER}} .htslider-slider .slick-dots li.slick-active button' => 'background-color: {{VALUE}} !important;',
+                            '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li.slick-active button' => 'background-color: {{VALUE}} !important;',
+                            
+                        ],
+                    ]
+                );
+
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'dots_border_hover',
+                        'label' => __( 'Border', 'ht-slider' ),
+                        'selector' => '{{WRAPPER}} .htslider-slider .slick-dots li button:hover,{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button:hover,{{WRAPPER}} .htslider-slider .slick-dots li.slick-active button,{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li.slick-active button',
+                    ]
+                );
+
+                $this->add_responsive_control(
+                    'dots_border_radius_hover',
+                    [
+                        'label' => esc_html__( 'Border Radius', 'ht-slider' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'selectors' => [
+                            '{{WRAPPER}} .htslider-slider .slick-dots li button:hover' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
+                            '{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li button:hover,{{WRAPPER}} .htslider-slider .slick-dots li.slick-active button,{{WRAPPER}} .htslider-slider-area .hero-slider-controls .slick-dots li.slick-active button' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
+                        ],
+                    ]
+                );
+
+                    $this->add_responsive_control(
+                        'htslider_carousel_dots_height_active',
+                        [
+                            'label' => __( 'Height', 'ht-slider' ) . ' <i class="eicon-pro-icon"></i>',
+                            'type' => Controls_Manager::SLIDER,
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 200,
+                                    'step' => 1,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => '',
+                            ],
+                            'classes' => 'htslider-disable-control',
+                        ]
+                    );
+        
+                    $this->add_responsive_control(
+                        'htslider_carousel_dots_width_active',
+                        [
+                            'label' => __( 'Width', 'ht-slider' ) . ' <i class="eicon-pro-icon"></i>',
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px'],
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 200,
+                                    'step' => 1,
+                                ],
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => '',
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .htslider-carousel-activation .slick-dots li.slick-active button' => 'width: {{SIZE}}px !important;',
+                            ],
+                            'classes' => 'htslider-disable-control',
+                        ]
+                    );
+                $this->end_controls_tab(); // Hover Tab end
+
+            $this->end_controls_tabs();
+
+        $this->end_controls_section();
 
     }
 
