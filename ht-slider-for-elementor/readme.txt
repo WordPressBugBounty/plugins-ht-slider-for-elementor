@@ -2,8 +2,8 @@
 Contributors: hasthemes, htplugins, devitemsllc, zenaulislam, aslamhasib, tarekht
 Tags: Slider, Elementor, Widgets, Post type slider, Elementor Addons
 Requires at least: 5.0
-Tested up to: 6.7
-Stable tag: 1.6.4
+Tested up to: 6.8
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -209,6 +209,11 @@ HT Slider allows you to design and customize banner sliders that can effectively
 
 
 == Changelog ==
+
+= Version: 1.6.5 - Date: 2025-04-20 =
+* Fixed: Template library loading issue.
+* Tested: Compatibility with latest version of WordPress.
+* Tested: Compatibility with latest version of Elementor.
 
 = Version: 1.6.4 - Date: 2025-03-02 =
 * Added: Option to add box shadow in the HT Slider Widget.

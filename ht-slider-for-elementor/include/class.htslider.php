@@ -247,7 +247,9 @@ final class HTSlider_Addons_Elementor {
 
     public function includes() {
         require_once HTSLIDER_PL_INCLUDE. '/admin/Class_Recommended_Plugins.php' ;
-        require_once HTSLIDER_PL_INCLUDE. '/admin/recommendation-plugins.php' ;
+        add_action('init',  function() {
+            require_once HTSLIDER_PL_INCLUDE. '/admin/recommendation-plugins.php' ;
+        });
         require_once HTSLIDER_PL_INCLUDE. '/admin/template-library.php' ;
         require_once HTSLIDER_PL_INCLUDE.'/helpers_function.php';
         require_once HTSLIDER_PL_INCLUDE.'/custom-post-type.php';

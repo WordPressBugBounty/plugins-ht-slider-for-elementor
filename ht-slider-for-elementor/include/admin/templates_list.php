@@ -26,7 +26,8 @@
                 <div class="htbanner-desc">
                     <h3><?php esc_html_e( 'HT Slider Template Library', 'ht-slider' ); ?></h3>
                     <?php
-                        $alltemplates = sizeof( HTSlider_Template_Library::instance()->get_templates_info( true )['templates'] ) ? sizeof( HTSlider_Template_Library::instance()->get_templates_info( true )['templates'] ) : 0;
+                        $templates_info = HTSlider_Template_Library::instance()->get_templates_info( true );
+                        $alltemplates = (is_array($templates_info) && isset($templates_info['templates'])) ? count($templates_info['templates']) : 0;
                     ?>
                     <?php if( !is_plugin_active('ht-slider-pro/htslider_pro.php') ){ ?>
                         <p><?php esc_html_e( '80 Templates are Free', 'ht-slider' ); ?></p>
@@ -47,7 +48,10 @@
         </div>
         <!-- Top banner area end -->
 
-        <?php if( HTSlider_Template_Library::instance()->get_templates_info( true )['templates'] ): ?>
+        <?php 
+        // Re-use the templates_info variable that was already defined earlier
+        if( is_array($templates_info) && isset($templates_info['templates']) ): 
+        ?>
             
             <div class="htmega-topbar">
                 <span id="htmegaclose">&larr; <?php esc_html_e( 'Back to Library', 'ht-slider' ); ?></span>
@@ -56,7 +60,7 @@
 
             <ul id="tp-grid" class="tp-grid">
 
-                <?php foreach ( HTSlider_Template_Library::instance()->get_templates_info( true )['templates'] as $httemplate ): 
+                <?php foreach ( $templates_info['templates'] as $httemplate ): 
                     
                     $allcat = explode( ' ', $httemplate['category'] );
 

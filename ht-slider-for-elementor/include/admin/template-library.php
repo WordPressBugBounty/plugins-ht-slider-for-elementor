@@ -70,6 +70,7 @@ class HTSlider_Template_Library{
                 'timeout'    => $force_update ? 25 : 10,
                 'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url(),
                 'body'       => $body_args,
+                'sslverify'  => false
             ]
         );
         $response = json_decode( wp_remote_retrieve_body( $request ), true );
