@@ -17,12 +17,23 @@ function htslider_slider_shortcode( $atts ) {
     );
     $atts = shortcode_atts( $default_atts, $atts );
     $limit = intval( $atts['limit'] );
-    $show_by = sanitize_text_field( $atts['show_by'] );
-    $ids = sanitize_text_field( $atts['ids'] );
+    $show_by = in_array( sanitize_text_field( $atts['show_by'] ), ['show_byid', 'show_bycat'], true ) ? sanitize_text_field( $atts['show_by'] ) : 'show_byid';
+    
+    // Sanitize and validate IDs - ensure they are only numbers and commas
+    $ids = preg_replace('/[^0-9,]/', '', sanitize_text_field( $atts['ids'] ));
+    
+    // Sanitize and validate category
     $category = sanitize_text_field( $atts['category'] );
-    $arrow = sanitize_text_field( $atts['arrow'] );
-    $pagination = sanitize_text_field( $atts['pagination'] );
-    $slides = intval( $atts['slides'] ); 
+    if (!empty($category) && !is_numeric($category)) {
+        $category = sanitize_title($category); // For slug-based lookups
+    }
+    
+    // Strict validation for boolean parameters
+    $arrow = in_array( strtolower( sanitize_text_field( $atts['arrow'] ) ), ['true', '1', 'yes', 'on'], true ) ? 'true' : 'false';
+    $pagination = in_array( strtolower( sanitize_text_field( $atts['pagination'] ) ), ['true', '1', 'yes', 'on'], true ) ? 'true' : 'false';
+    
+    // Ensure slides is a positive integer
+    $slides = max(1, absint( $atts['slides'] ));
 
     // Set up query arguments based on shortcode attributes
     $args = array(
@@ -86,7 +97,7 @@ function htslider_slider_shortcode( $atts ) {
     <script>
         jQuery(document).ready(function($) {
 
-            var $slider_elem = $('.htslider-slider.<?php esc_attr_e( $unicid ); ?>');
+            var $slider_elem = $('.htslider-slider.<?php echo esc_attr( $unicid ); ?>');
             $($slider_elem).slick({
                 arrows: <?php echo esc_js( $arrow ); ?>,
                 prevArrow: '<button class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M390.627 54.627 189.255 256l201.372 201.373a32 32 0 1 1-45.254 45.254l-224-224a32 32 0 0 1 0-45.254l224-224a32 32 0 0 1 45.254 45.254z" fill="#000000" opacity="1" data-original="#000000" class=""></path></g></svg></button>',
@@ -94,7 +105,7 @@ function htslider_slider_shortcode( $atts ) {
                 dots: <?php echo esc_js( $pagination ); ?>,
                 infinite: true,
                 speed: 300,
-                slidesToShow: <?php echo esc_js( absint( $slides ) ); ?>
+                slidesToShow: <?php echo esc_js( $slides ); ?>
             });
 
             if ($slider_elem) {

@@ -1,10 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: HT Slider for Elementor - Add Hero Slider, Post Slider "
-"Carousel, Image Slider, Video Slider, Ecommerce Slider\n"
+"Project-Id-Version: HT Slider for Elementor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-27 11:36+0000\n"
+"POT-Creation-Date: 2025-06-17 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.7.1; wp-6.7.2\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.26\n"
 "X-Domain: ht-slider"
 
 #: include/helpers_function.php:198
@@ -52,18 +51,18 @@ msgid ""
 msgstr ""
 
 #. %s: Template Count
-#: include/admin/templates_list.php:36
+#: include/admin/templates_list.php:37
 #, php-format
 msgid "%s Templates"
 msgstr ""
 
 #. %s: Template Title
-#: include/admin/templates_list.php:107
+#: include/admin/templates_list.php:111
 #, php-format
 msgid "%s."
 msgstr ""
 
-#: include/admin/templates_list.php:32
+#: include/admin/templates_list.php:33
 msgid "80 Templates are Free"
 msgstr ""
 
@@ -164,7 +163,7 @@ msgstr ""
 msgid "Autoplay speed"
 msgstr ""
 
-#: include/admin/templates_list.php:53
+#: include/admin/templates_list.php:57
 msgid "Back to Library"
 msgstr ""
 
@@ -282,14 +281,14 @@ msgstr ""
 msgid "Button Text"
 msgstr ""
 
-#: include/admin/templates_list.php:43
+#: include/admin/templates_list.php:44
 msgid "Buy HTSlider Pro Version"
 msgstr ""
 
 #: include/admin/Class_Recommended_Plugins.php:126
 #: include/admin/Class_Recommended_Plugins.php:234
 #: include/admin/Class_Recommended_Plugins.php:288
-#: include/admin/templates_list.php:93
+#: include/admin/templates_list.php:97
 msgid "Buy Now"
 msgstr ""
 
@@ -472,7 +471,7 @@ msgstr ""
 msgid "Edit Item"
 msgstr ""
 
-#: include/admin/template-library.php:216
+#: include/admin/template-library.php:217
 msgid "Edit Template"
 msgstr ""
 
@@ -703,9 +702,7 @@ msgid "HT Slider"
 msgstr ""
 
 #. Name of the plugin
-msgid ""
-"HT Slider for Elementor - Add Hero Slider, Post Slider Carousel, Image "
-"Slider, Video Slider, Ecommerce Slider"
+msgid "HT Slider for Elementor"
 msgstr ""
 
 #: include/admin/recommendation-plugins.php:222
@@ -778,12 +775,12 @@ msgstr ""
 msgid "https://example.com"
 msgstr ""
 
-#. URI of the plugin
-msgid "https://htplugins.com/"
-msgstr ""
-
 #. Author URI of the plugin
 msgid "https://profiles.wordpress.org/htplugins/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://theplugindemo.com/ht-slider/"
 msgstr ""
 
 #: include/addons/htslider_addons.php:572
@@ -826,15 +823,15 @@ msgstr ""
 msgid "Image Position only for Slide Layout Two"
 msgstr ""
 
-#: include/admin/templates_list.php:97
+#: include/admin/templates_list.php:101
 msgid "Import"
 msgstr ""
 
-#: include/admin/templates_list.php:71
+#: include/admin/templates_list.php:75
 msgid "Import to Library"
 msgstr ""
 
-#: include/admin/templates_list.php:72
+#: include/admin/templates_list.php:76
 msgid "Import to Slider"
 msgstr ""
 
@@ -1004,7 +1001,7 @@ msgstr ""
 msgid "New Item Category"
 msgstr ""
 
-#: include/admin/template-library.php:194
+#: include/admin/template-library.php:195
 msgid "New Template"
 msgstr ""
 
@@ -1168,7 +1165,7 @@ msgid "Slider"
 msgstr ""
 
 #: include/admin/Class_Recommended_Plugins.php:127
-#: include/admin/templates_list.php:100
+#: include/admin/templates_list.php:104
 msgid "Preview"
 msgstr ""
 
@@ -1184,7 +1181,7 @@ msgstr ""
 msgid "Previous icon"
 msgstr ""
 
-#: include/admin/templates_list.php:110
+#: include/admin/templates_list.php:114
 msgid "Pro"
 msgstr ""
 
@@ -1508,7 +1505,7 @@ msgid "Sub title item "
 msgstr ""
 
 #. %s: Template Title
-#: include/admin/templates_list.php:68
+#: include/admin/templates_list.php:72
 #, php-format
 msgid "Successfully %s has been imported."
 msgstr ""
@@ -1533,7 +1530,7 @@ msgctxt "Taxonomy Singular Name"
 msgid "Slider Category"
 msgstr ""
 
-#: include/admin/template-library.php:160
+#: include/admin/template-library.php:161
 msgid "Templates in this package"
 msgstr ""
 
@@ -1612,7 +1609,7 @@ msgstr ""
 msgid "Update Item"
 msgstr ""
 
-#: include/class.htslider.php:269 include/class.htslider.php:270
+#: include/class.htslider.php:271 include/class.htslider.php:272
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -1750,7 +1747,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: include/admin/template-library.php:180
+#: include/admin/template-library.php:181
 msgid "You are not permitted to import the template."
 msgstr ""
 
