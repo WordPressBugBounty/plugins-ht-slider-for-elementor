@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, zenaulislam, aslamhasib, tarekh
 Tags: Slider, Elementor, Widgets, Post type slider, Elementor Addons
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.6.6
+Stable tag: 1.6.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,8 @@ The plugin also offers a wide range of custom styling options to tailor your sli
 With [HT Slider](https://hasthemes.com/plugins/ht-slider-pro-for-elementor/), you have the freedom to showcase content from any custom post type, including WooCommerce products. Furthermore, it offers multiple layouts to display your posts within a slider.
 
 
-**👉 [Purchase Pro]( https://hasthemes.com/plugins/ht-slider-pro-for-elementor/) | [Support](https://hasthemes.com/contact-us/") 👈**
+**🚀 [Get Pro Version](https://hasthemes.com/plugins/ht-slider-pro-for-elementor/) | 📹 [Watch Video Tutorial](https://youtu.be/Jl-hdWg2l10) | 📚 [Documentation](https://hasthemes.com/docs/ht-slider/) | 💬 [Support](https://hasthemes.com/contact-us/)**
+
 
 **👉 [80+ Pre-Designed Templates Demo](https://theplugindemo.com/ht-slider/)**
 
@@ -209,6 +210,11 @@ HT Slider allows you to design and customize banner sliders that can effectively
 
 
 == Changelog ==
+
+= Version: 1.6.7 - Date: 2025-07-03 =
+* Added: Option to add an icon and set icon position for the "Read More" button in the Posts Slider widget.
+* Fixed: A few minor issues.
+* Tested: Compatibility with latest version of Elementor.
 
 = Version: 1.6.6 - Date: 2025-06-17 =
 * Fixed: Sanitization and escaping issues.

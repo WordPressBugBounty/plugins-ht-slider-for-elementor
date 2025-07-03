@@ -171,6 +171,35 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
             );
 
             $this->add_control(
+                'read_more_icon',
+                [
+                    'label'                 => esc_html__( 'Button Icon', 'ht-slider' ),
+                    'type'                  => Controls_Manager::ICONS,
+                    'fa4compatibility'      => 'buttonicon',
+                    'condition'             => [
+                        'show_read_more_btn' => 'yes',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'read_more_icon_position',
+                [
+                    'label'                 => esc_html__( 'Icon Position', 'ht-slider' ),
+                    'type'                  => Controls_Manager::SELECT,
+                    'default'               => 'after',
+                    'options'               => [
+                        'before'    => esc_html__( 'Before', 'ht-slider' ),
+                        'after'     => esc_html__( 'After', 'ht-slider' ),
+                    ],
+                    'condition'             => [
+                        'show_read_more_btn' => 'yes',
+                        'read_more_icon[value]!' => '',
+                    ],
+                ]
+            );
+
+            $this->add_control(
                 'show_category',
                 [
                     'label'         => esc_html__( 'Category', 'ht-slider' ),
@@ -1283,10 +1312,23 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
                             'default'=>'#464545',
                             'selectors' => [
                                 '{{WRAPPER}} .htslider-single-post-slide .post-btn a.readmore-btn' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .htslider-single-post-slide .post-btn a.readmore-btn svg path' => 'fill: {{VALUE}}',
                             ],
                         ]
                     );
-
+                    
+                    $this->add_control(
+                        'readmore_button_icon_color',
+                        [
+                            'label' => esc_html__( 'Icon Color', 'ht-slider' ),
+                            'type' => Controls_Manager::COLOR,
+                            'default'=>'',
+                            'selectors' => [
+                                '{{WRAPPER}} .htslider-single-post-slide .post-btn a.readmore-btn i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .htslider-single-post-slide .post-btn a.readmore-btn svg path' => 'fill: {{VALUE}}',
+                            ],
+                        ]
+                    );
                     $this->add_group_control(
                         Group_Control_Typography::get_type(),
                         [
@@ -1366,10 +1408,23 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
                             'default'=>'#ffffff',
                             'selectors' => [
                                 '{{WRAPPER}} .htslider-single-post-slide .post-btn a.readmore-btn:hover' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .htslider-single-post-slide .post-btn a.readmore-btn:hover svg path' => 'fill: {{VALUE}}',
                             ],
                         ]
                     );
 
+                    $this->add_control(
+                        'readmore_hover_icon_color',
+                        [
+                            'label' => esc_html__( 'Icon Color', 'ht-slider' ),
+                            'type' => Controls_Manager::COLOR,
+                            'default'=>'',
+                            'selectors' => [
+                                '{{WRAPPER}} .htslider-single-post-slide .post-btn a.readmore-btn:hover i' => 'color: {{VALUE}}',
+                                '{{WRAPPER}} .htslider-single-post-slide .post-btn a.readmore-btn:hover svg path' => 'fill: {{VALUE}}',
+                            ],
+                        ]
+                    );
                     $this->add_group_control(
                         Group_Control_Background::get_type(),
                         [
@@ -1856,6 +1911,7 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
                         ]
                     ]
                 );
+
                 $this->add_responsive_control(
                     'carousel_dots_offset_y',
                     [
@@ -2392,7 +2448,14 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
                         if( $settings['show_read_more_btn'] == 'yes' ):
                     ?>
                         <div class="post-btn">
-                            <a class="readmore-btn" href="<?php the_permalink();?>"><?php echo esc_html( $settings['read_more_txt'] );?></a>
+                            <a class="readmore-btn <?php echo esc_attr($settings['read_more_icon_position']); ?>" href="<?php the_permalink();?>">
+                                <?php 
+                                    echo esc_html( $settings['read_more_txt'] );
+                                    if( !empty($settings['read_more_icon']['value']) ){
+                                        Icons_Manager::render_icon( $settings['read_more_icon'], [ 'aria-hidden' => 'true' ] );
+                                    }
+                                ?>
+                            </a>
                         </div>
                     <?php endif; ?>
                 </div>
