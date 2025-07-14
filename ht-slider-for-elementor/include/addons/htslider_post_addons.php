@@ -351,7 +351,7 @@ class HTSlider_Elementor_Widget_Post_Slider extends Widget_Base {
                     'label'         => esc_html__('Tablet Resolution', 'ht-slider'),
                     'description'   => esc_html__('The resolution to tablet.', 'ht-slider'),
                     'type'          => Controls_Manager::NUMBER,
-                    'default'       => 750,
+                    'default'       => 1024,
                     'condition'     => [
                         'slider_on' => 'yes',
                     ]

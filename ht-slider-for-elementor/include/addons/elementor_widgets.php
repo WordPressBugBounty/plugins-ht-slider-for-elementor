@@ -319,7 +319,7 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                     'label' => __('Tablet Resolution', 'ht-slider'),
                     'description' => __('The resolution to tablet.', 'ht-slider'),
                     'type' => Controls_Manager::NUMBER,
-                    'default' => 750,
+                    'default' => 1024,
                 ]
             );
 

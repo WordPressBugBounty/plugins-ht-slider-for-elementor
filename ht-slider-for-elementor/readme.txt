@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, zenaulislam, aslamhasib, tarekh
 Tags: Slider, Elementor, Widgets, Post type slider, Elementor Addons
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.6.7
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -210,6 +210,11 @@ HT Slider allows you to design and customize banner sliders that can effectively
 
 
 == Changelog ==
+
+= Version: 1.6.8 - Date: 2025-07-14 =
+* Fixed: Default responsive breakpoint issue for sliders on tablet devices.
+* Fixed: A few minor issues.
+* Tested: Compatibility with latest version of Elementor.
 
 = Version: 1.6.7 - Date: 2025-07-03 =
 * Added: Option to add an icon and set icon position for the "Read More" button in the Posts Slider widget.
