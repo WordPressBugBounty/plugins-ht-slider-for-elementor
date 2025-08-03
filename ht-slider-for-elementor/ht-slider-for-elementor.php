@@ -5,18 +5,18 @@
  * Plugin URI:  https://theplugindemo.com/ht-slider/
  * Author:      HT Plugins
  * Author URI:  https://profiles.wordpress.org/htplugins/
- * Version:     1.6.8
+ * Version:     1.6.9
  * License:     GPL2
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: ht-slider
  * Domain Path: /languages
- * Elementor tested up to: 3.30.2
- * Elementor Pro tested up to: 3.30.0
+ * Elementor tested up to: 3.30.4
+ * Elementor Pro tested up to: 3.30.1
 */
 
 if( ! defined( 'ABSPATH' ) ) exit(); // Exit if accessed directly
 
-define( 'HTSLIDER_VERSION', '1.6.8' );
+define( 'HTSLIDER_VERSION', '1.6.9' );
 define( 'HTSLIDER_ADDONS_PL_ROOT', __FILE__ );
 define( 'HTSLIDER_PL_URL', plugins_url( '/', HTSLIDER_ADDONS_PL_ROOT ) );
 define( 'HTSLIDER_PL_PATH', plugin_dir_path( HTSLIDER_ADDONS_PL_ROOT ) );

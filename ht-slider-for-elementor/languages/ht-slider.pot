@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HT Slider for Elementor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 09:54+0000\n"
+"POT-Creation-Date: 2025-08-03 04:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.26\n"
+"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.26\n"
 "X-Domain: ht-slider"
 
 #: include/helpers_function.php:198
@@ -84,7 +84,7 @@ msgid "Activating.."
 msgstr ""
 
 #: include/addons/elementor_widgets.php:967
-#: include/addons/htslider_addons.php:2015
+#: include/addons/htslider_addons.php:2027
 #: include/addons/htslider_scroll_navigation.php:636
 msgid "Active"
 msgstr ""
@@ -94,7 +94,7 @@ msgid "Active Slide"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:177
-#: include/addons/htslider_addons.php:538
+#: include/addons/htslider_addons.php:550
 msgid "Add Column gap Ex. 15px"
 msgstr ""
 
@@ -110,11 +110,11 @@ msgstr ""
 msgid "Add or remove items"
 msgstr ""
 
-#: include/addons/htslider_addons.php:520
+#: include/addons/htslider_addons.php:532
 msgid "Add the expected height for slider initial load"
 msgstr ""
 
-#: include/addons/htslider_addons.php:916
+#: include/addons/htslider_addons.php:928
 #: include/addons/htslider_scroll_navigation.php:489
 #: include/addons/htslider_scroll_navigation.php:711
 msgid "Alignment"
@@ -135,11 +135,11 @@ msgid ""
 "the product variations in a whole new light with Swatchly."
 msgstr ""
 
-#: include/addons/htslider_addons.php:1374
+#: include/addons/htslider_addons.php:1386
 msgid "Arrow"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1385
+#: include/addons/htslider_addons.php:1397
 msgid "Arrow Position"
 msgstr ""
 
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Autoplay animation speed"
 msgstr ""
 
-#: include/addons/htslider_addons.php:741
+#: include/addons/htslider_addons.php:753
 msgid "Autoplay Speed"
 msgstr ""
 
@@ -169,12 +169,12 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:639
 #: include/addons/htslider_addons.php:204
-#: include/addons/htslider_addons.php:890
-#: include/addons/htslider_addons.php:1109
-#: include/addons/htslider_addons.php:1590
-#: include/addons/htslider_addons.php:1650
-#: include/addons/htslider_addons.php:1941
-#: include/addons/htslider_addons.php:2035
+#: include/addons/htslider_addons.php:902
+#: include/addons/htslider_addons.php:1121
+#: include/addons/htslider_addons.php:1602
+#: include/addons/htslider_addons.php:1662
+#: include/addons/htslider_addons.php:1953
+#: include/addons/htslider_addons.php:2047
 #: include/addons/htslider_scroll_navigation.php:184
 #: include/addons/htslider_scroll_navigation.php:536
 #: include/addons/htslider_scroll_navigation.php:644
@@ -183,14 +183,14 @@ msgstr ""
 msgid "Background"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1255
+#: include/addons/htslider_addons.php:1267
 msgid "Background  Color"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:559
 #: include/addons/elementor_widgets.php:892
 #: include/addons/elementor_widgets.php:973
-#: include/addons/htslider_addons.php:832
+#: include/addons/htslider_addons.php:844
 msgid "Background Color"
 msgstr ""
 
@@ -198,13 +198,13 @@ msgstr ""
 #: include/addons/elementor_widgets.php:653
 #: include/addons/elementor_widgets.php:906
 #: include/addons/elementor_widgets.php:990
-#: include/addons/htslider_addons.php:1118
-#: include/addons/htslider_addons.php:1293
-#: include/addons/htslider_addons.php:1347
-#: include/addons/htslider_addons.php:1600
-#: include/addons/htslider_addons.php:1660
-#: include/addons/htslider_addons.php:1951
-#: include/addons/htslider_addons.php:2045
+#: include/addons/htslider_addons.php:1130
+#: include/addons/htslider_addons.php:1305
+#: include/addons/htslider_addons.php:1359
+#: include/addons/htslider_addons.php:1612
+#: include/addons/htslider_addons.php:1672
+#: include/addons/htslider_addons.php:1963
+#: include/addons/htslider_addons.php:2057
 #: include/addons/htslider_scroll_navigation.php:546
 #: include/addons/htslider_scroll_navigation.php:654
 #: include/addons/htslider_scroll_navigation.php:931
@@ -216,13 +216,13 @@ msgstr ""
 #: include/addons/elementor_widgets.php:661
 #: include/addons/elementor_widgets.php:914
 #: include/addons/elementor_widgets.php:998
-#: include/addons/htslider_addons.php:1126
-#: include/addons/htslider_addons.php:1301
-#: include/addons/htslider_addons.php:1355
-#: include/addons/htslider_addons.php:1608
-#: include/addons/htslider_addons.php:1668
-#: include/addons/htslider_addons.php:1959
-#: include/addons/htslider_addons.php:2053
+#: include/addons/htslider_addons.php:1138
+#: include/addons/htslider_addons.php:1313
+#: include/addons/htslider_addons.php:1367
+#: include/addons/htslider_addons.php:1620
+#: include/addons/htslider_addons.php:1680
+#: include/addons/htslider_addons.php:1971
+#: include/addons/htslider_addons.php:2065
 #: include/addons/htslider_scroll_navigation.php:554
 #: include/addons/htslider_scroll_navigation.php:662
 #: include/addons/htslider_scroll_navigation.php:939
@@ -230,16 +230,16 @@ msgstr ""
 msgid "Border Radius"
 msgstr ""
 
-#: include/addons/htslider_addons.php:795
+#: include/addons/htslider_addons.php:807
 #: include/addons/htslider_scroll_navigation.php:450
 msgid "Bottom"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1182
+#: include/addons/htslider_addons.php:1194
 msgid "Bottom (Pro)"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1718
+#: include/addons/htslider_addons.php:1730
 msgid "Bottom Center"
 msgstr ""
 
@@ -248,8 +248,8 @@ msgid "Bottom Center (Pro)"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:398
-#: include/addons/htslider_addons.php:1391
-#: include/addons/htslider_addons.php:1719
+#: include/addons/htslider_addons.php:1403
+#: include/addons/htslider_addons.php:1731
 msgid "Bottom Left"
 msgstr ""
 
@@ -257,7 +257,7 @@ msgstr ""
 msgid "Bottom Left (Pro)"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1720
+#: include/addons/htslider_addons.php:1732
 msgid "Bottom Right"
 msgstr ""
 
@@ -267,13 +267,13 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:593
 #: include/addons/elementor_widgets.php:673
-#: include/addons/htslider_addons.php:1137
-#: include/addons/htslider_addons.php:1619
-#: include/addons/htslider_addons.php:1679
+#: include/addons/htslider_addons.php:1149
+#: include/addons/htslider_addons.php:1631
+#: include/addons/htslider_addons.php:1691
 msgid "Box Shadow"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1215
+#: include/addons/htslider_addons.php:1227
 msgid "Button"
 msgstr ""
 
@@ -300,8 +300,8 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: include/addons/htslider_addons.php:924
-#: include/addons/htslider_addons.php:1181
+#: include/addons/htslider_addons.php:936
+#: include/addons/htslider_addons.php:1193
 #: include/addons/htslider_scroll_navigation.php:421
 #: include/addons/htslider_scroll_navigation.php:446
 #: include/addons/htslider_scroll_navigation.php:497
@@ -309,15 +309,15 @@ msgstr ""
 msgid "Center"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1199
+#: include/addons/htslider_addons.php:1211
 msgid "Center (Pro)"
 msgstr ""
 
-#: include/addons/htslider_addons.php:699
+#: include/addons/htslider_addons.php:711
 msgid "Center Mode"
 msgstr ""
 
-#: include/addons/htslider_addons.php:712
+#: include/addons/htslider_addons.php:724
 msgid "Center Padding"
 msgstr ""
 
@@ -327,32 +327,32 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:543
 #: include/addons/elementor_widgets.php:623
-#: include/addons/htslider_addons.php:875
-#: include/addons/htslider_addons.php:960
-#: include/addons/htslider_addons.php:1002
-#: include/addons/htslider_addons.php:1043
-#: include/addons/htslider_addons.php:1244
-#: include/addons/htslider_addons.php:1323
+#: include/addons/htslider_addons.php:887
+#: include/addons/htslider_addons.php:972
+#: include/addons/htslider_addons.php:1014
+#: include/addons/htslider_addons.php:1055
+#: include/addons/htslider_addons.php:1256
 #: include/addons/htslider_addons.php:1335
-#: include/addons/htslider_addons.php:1576
-#: include/addons/htslider_addons.php:1636
+#: include/addons/htslider_addons.php:1347
+#: include/addons/htslider_addons.php:1588
+#: include/addons/htslider_addons.php:1648
 #: include/addons/htslider_scroll_navigation.php:381
 #: include/addons/htslider_scroll_navigation.php:905
 #: include/addons/htslider_scroll_navigation.php:960
 msgid "Color"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1558
+#: include/addons/htslider_addons.php:1570
 #: include/addons/htslider_scroll_navigation.php:888
 msgid "Colors and Border"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:175
-#: include/addons/htslider_addons.php:536
+#: include/addons/htslider_addons.php:548
 msgid "Column Gap"
 msgstr ""
 
-#: include/addons/htslider_addons.php:661
+#: include/addons/htslider_addons.php:673
 msgid "Column width according to Content"
 msgstr ""
 
@@ -373,7 +373,7 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1072
+#: include/addons/htslider_addons.php:1084
 msgid "Content Box"
 msgstr ""
 
@@ -422,13 +422,13 @@ msgstr ""
 msgid "Custom Content"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1723
+#: include/addons/htslider_addons.php:1735
 msgid "Custom Position"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:399
 #: include/addons/elementor_widgets.php:714
-#: include/addons/htslider_addons.php:1392
+#: include/addons/htslider_addons.php:1404
 msgid "Custom Position (Pro)"
 msgstr ""
 
@@ -437,7 +437,7 @@ msgid "DataCaptia"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:396
-#: include/addons/htslider_addons.php:1389
+#: include/addons/htslider_addons.php:1401
 msgid "Default"
 msgstr ""
 
@@ -463,7 +463,7 @@ msgid "Docus – YouTube Video Playlist"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:705
-#: include/addons/htslider_addons.php:1714
+#: include/addons/htslider_addons.php:1726
 msgid "Dots Show In"
 msgstr ""
 
@@ -494,9 +494,17 @@ msgstr ""
 msgid "Enable mouse dragging"
 msgstr ""
 
+#: include/addons/htslider_addons.php:347
+msgid "Example: 10,11,105"
+msgstr ""
+
 #: include/addons/htslider_addons.php:146
-#: include/addons/htslider_addons.php:1028
+#: include/addons/htslider_addons.php:1040
 msgid "Excerpt"
+msgstr ""
+
+#: include/addons/htslider_addons.php:344
+msgid "Exclude Slides"
 msgstr ""
 
 #. %1$s: HT Advanced Slider
@@ -519,7 +527,7 @@ msgstr ""
 msgid "External Menu for Navigation"
 msgstr ""
 
-#: include/addons/htslider_addons.php:650
+#: include/addons/htslider_addons.php:662
 msgid "Fade"
 msgstr ""
 
@@ -535,7 +543,7 @@ msgstr ""
 msgid "Filter items list"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1531
+#: include/addons/htslider_addons.php:1543
 msgid "Font Size"
 msgstr ""
 
@@ -607,17 +615,17 @@ msgstr ""
 #: include/addons/elementor_widgets.php:494
 #: include/addons/elementor_widgets.php:925
 #: include/addons/elementor_widgets.php:1010
-#: include/addons/htslider_addons.php:806
-#: include/addons/htslider_addons.php:1466
-#: include/addons/htslider_addons.php:1969
-#: include/addons/htslider_addons.php:2064
+#: include/addons/htslider_addons.php:818
+#: include/addons/htslider_addons.php:1478
+#: include/addons/htslider_addons.php:1981
+#: include/addons/htslider_addons.php:2076
 #: include/addons/htslider_scroll_navigation.php:258
 #: include/addons/htslider_scroll_navigation.php:565
 #: include/addons/htslider_scroll_navigation.php:734
 msgid "Height"
 msgstr ""
 
-#: include/addons/htslider_addons.php:781
+#: include/addons/htslider_addons.php:793
 msgid "Hide"
 msgstr ""
 
@@ -634,15 +642,15 @@ msgid "Horizontal (Pro)"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:722
-#: include/addons/htslider_addons.php:1194
-#: include/addons/htslider_addons.php:1731
+#: include/addons/htslider_addons.php:1206
+#: include/addons/htslider_addons.php:1743
 #: include/addons/htslider_scroll_navigation.php:843
 msgid "Horizontal Position"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:616
-#: include/addons/htslider_addons.php:1316
-#: include/addons/htslider_addons.php:1629
+#: include/addons/htslider_addons.php:1328
+#: include/addons/htslider_addons.php:1641
 #: include/addons/htslider_scroll_navigation.php:953
 msgid "Hover"
 msgstr ""
@@ -783,7 +791,7 @@ msgstr ""
 msgid "https://theplugindemo.com/ht-slider/"
 msgstr ""
 
-#: include/addons/htslider_addons.php:572
+#: include/addons/htslider_addons.php:584
 msgid "Icon"
 msgstr ""
 
@@ -791,7 +799,7 @@ msgstr ""
 msgid "Icon Size"
 msgstr ""
 
-#: include/addons/htslider_addons.php:568
+#: include/addons/htslider_addons.php:580
 msgid "Icon Type"
 msgstr ""
 
@@ -810,7 +818,7 @@ msgid ""
 "Slider post type. You can create slides by clicking %shere%s."
 msgstr ""
 
-#: include/addons/htslider_addons.php:573
+#: include/addons/htslider_addons.php:585
 msgid "Image (Pro)"
 msgstr ""
 
@@ -835,8 +843,8 @@ msgstr ""
 msgid "Import to Slider"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1927
-#: include/addons/htslider_addons.php:2021
+#: include/addons/htslider_addons.php:1939
+#: include/addons/htslider_addons.php:2033
 msgid "Index Color"
 msgstr ""
 
@@ -846,8 +854,8 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:407
 #: include/addons/elementor_widgets.php:830
-#: include/addons/htslider_addons.php:1400
-#: include/addons/htslider_addons.php:1852
+#: include/addons/htslider_addons.php:1412
+#: include/addons/htslider_addons.php:1864
 msgid "Inner Gap"
 msgstr ""
 
@@ -912,18 +920,18 @@ msgid "Keyboard Scroll"
 msgstr ""
 
 #: include/addons/htslider_addons.php:184
-#: include/addons/htslider_addons.php:920
+#: include/addons/htslider_addons.php:932
 #: include/addons/htslider_scroll_navigation.php:417
 #: include/addons/htslider_scroll_navigation.php:493
 #: include/addons/htslider_scroll_navigation.php:715
 msgid "Left"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1198
+#: include/addons/htslider_addons.php:1210
 msgid "left"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1722
+#: include/addons/htslider_addons.php:1734
 msgid "Left Center"
 msgstr ""
 
@@ -943,26 +951,26 @@ msgid ""
 msgstr ""
 
 #: include/addons/elementor_widgets.php:869
-#: include/addons/htslider_addons.php:972
-#: include/addons/htslider_addons.php:1013
-#: include/addons/htslider_addons.php:1054
-#: include/addons/htslider_addons.php:1144
-#: include/addons/htslider_addons.php:1280
-#: include/addons/htslider_addons.php:1905
+#: include/addons/htslider_addons.php:984
+#: include/addons/htslider_addons.php:1025
+#: include/addons/htslider_addons.php:1066
+#: include/addons/htslider_addons.php:1156
+#: include/addons/htslider_addons.php:1292
+#: include/addons/htslider_addons.php:1917
 msgid "Margin"
 msgstr ""
 
-#: include/addons/htslider_addons.php:518
+#: include/addons/htslider_addons.php:530
 msgid "Minimum Height"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:329
-#: include/addons/htslider_addons.php:462
+#: include/addons/htslider_addons.php:474
 msgid "Mobile Phone"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:362
-#: include/addons/htslider_addons.php:504
+#: include/addons/htslider_addons.php:516
 msgid "Mobile Resolution"
 msgstr ""
 
@@ -1005,7 +1013,7 @@ msgstr ""
 msgid "New Template"
 msgstr ""
 
-#: include/addons/htslider_addons.php:604
+#: include/addons/htslider_addons.php:616
 msgid "Next Icon"
 msgstr ""
 
@@ -1015,7 +1023,7 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:215
 #: include/addons/elementor_widgets.php:227
-#: include/addons/htslider_addons.php:685
+#: include/addons/htslider_addons.php:697
 msgid "No"
 msgstr ""
 
@@ -1029,9 +1037,9 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:464
 #: include/addons/elementor_widgets.php:885
-#: include/addons/htslider_addons.php:1229
-#: include/addons/htslider_addons.php:1569
-#: include/addons/htslider_addons.php:1921
+#: include/addons/htslider_addons.php:1241
+#: include/addons/htslider_addons.php:1581
+#: include/addons/htslider_addons.php:1933
 #: include/addons/htslider_scroll_navigation.php:528
 #: include/addons/htslider_scroll_navigation.php:899
 msgid "Normal"
@@ -1055,13 +1063,13 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:434
 #: include/addons/elementor_widgets.php:776
-#: include/addons/htslider_addons.php:1431
-#: include/addons/htslider_addons.php:1789
+#: include/addons/htslider_addons.php:1443
+#: include/addons/htslider_addons.php:1801
 msgid "Offset X"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:803
-#: include/addons/htslider_addons.php:1820
+#: include/addons/htslider_addons.php:1832
 msgid "Offset Y"
 msgstr ""
 
@@ -1069,7 +1077,7 @@ msgstr ""
 msgid "On"
 msgstr ""
 
-#: include/addons/htslider_addons.php:674
+#: include/addons/htslider_addons.php:686
 msgid "On this Switcher to Verticle Slide"
 msgstr ""
 
@@ -1092,22 +1100,22 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:600
 #: include/addons/elementor_widgets.php:856
-#: include/addons/htslider_addons.php:1156
-#: include/addons/htslider_addons.php:1268
-#: include/addons/htslider_addons.php:1520
-#: include/addons/htslider_addons.php:1892
+#: include/addons/htslider_addons.php:1168
+#: include/addons/htslider_addons.php:1280
+#: include/addons/htslider_addons.php:1532
+#: include/addons/htslider_addons.php:1904
 #: include/addons/htslider_scroll_navigation.php:401
 msgid "Padding"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:685
-#: include/addons/htslider_addons.php:1694
+#: include/addons/htslider_addons.php:1706
 #: include/addons/htslider_scroll_navigation.php:517
 msgid "Pagination"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:697
-#: include/addons/htslider_addons.php:1706
+#: include/addons/htslider_addons.php:1718
 msgid "Pagination Position"
 msgstr ""
 
@@ -1120,7 +1128,7 @@ msgid "Parent Item:"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:219
-#: include/addons/htslider_addons.php:689
+#: include/addons/htslider_addons.php:701
 msgid "Pause on Hover?"
 msgstr ""
 
@@ -1145,8 +1153,8 @@ msgstr ""
 msgid "Popular Items"
 msgstr ""
 
-#: include/addons/htslider_addons.php:790
-#: include/addons/htslider_addons.php:1167
+#: include/addons/htslider_addons.php:802
+#: include/addons/htslider_addons.php:1179
 msgid "Position"
 msgstr ""
 
@@ -1173,7 +1181,7 @@ msgstr ""
 msgid "Preview Link Generator"
 msgstr ""
 
-#: include/addons/htslider_addons.php:588
+#: include/addons/htslider_addons.php:600
 msgid "Previous Icon"
 msgstr ""
 
@@ -1189,12 +1197,12 @@ msgstr ""
 msgid "Product Variation Swatches"
 msgstr ""
 
-#: include/addons/htslider_addons.php:767
-#: include/addons/htslider_addons.php:778
+#: include/addons/htslider_addons.php:779
+#: include/addons/htslider_addons.php:790
 msgid "Progress Bar"
 msgstr ""
 
-#: include/addons/htslider_addons.php:847
+#: include/addons/htslider_addons.php:859
 msgid "Progress Color"
 msgstr ""
 
@@ -1219,20 +1227,20 @@ msgid "Remove featured image"
 msgstr ""
 
 #: include/addons/htslider_addons.php:185
-#: include/addons/htslider_addons.php:928
+#: include/addons/htslider_addons.php:940
 #: include/addons/htslider_scroll_navigation.php:425
 #: include/addons/htslider_scroll_navigation.php:501
 #: include/addons/htslider_scroll_navigation.php:723
 msgid "Right"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1200
+#: include/addons/htslider_addons.php:1212
 msgid "Right (Pro)"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:397
-#: include/addons/htslider_addons.php:1390
-#: include/addons/htslider_addons.php:1721
+#: include/addons/htslider_addons.php:1402
+#: include/addons/htslider_addons.php:1733
 msgid "Right Center"
 msgstr ""
 
@@ -1280,7 +1288,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: include/addons/htslider_addons.php:780
+#: include/addons/htslider_addons.php:792
 msgid "Show"
 msgstr ""
 
@@ -1296,7 +1304,7 @@ msgstr ""
 msgid "Show By ID"
 msgstr ""
 
-#: include/addons/htslider_addons.php:633
+#: include/addons/htslider_addons.php:645
 msgid "Show Dots Index"
 msgstr ""
 
@@ -1312,23 +1320,23 @@ msgstr ""
 msgid "Sirve – Simple Directory Listing"
 msgstr ""
 
-#: include/addons/htslider_addons.php:649
+#: include/addons/htslider_addons.php:661
 msgid "Slide"
 msgstr ""
 
-#: include/addons/htslider_addons.php:753
+#: include/addons/htslider_addons.php:765
 msgid "Slide Animation Speed"
 msgstr ""
 
-#: include/addons/htslider_addons.php:727
+#: include/addons/htslider_addons.php:739
 msgid "Slide Auto Play"
 msgstr ""
 
-#: include/addons/htslider_addons.php:646
+#: include/addons/htslider_addons.php:658
 msgid "Slide Effect"
 msgstr ""
 
-#: include/addons/htslider_addons.php:377
+#: include/addons/htslider_addons.php:389
 msgid "Slide Items (Desktop)"
 msgstr ""
 
@@ -1343,7 +1351,7 @@ msgid "Slider"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:194
-#: include/addons/htslider_addons.php:556
+#: include/addons/htslider_addons.php:568
 msgid "Slider Arrow"
 msgstr ""
 
@@ -1363,7 +1371,7 @@ msgstr ""
 msgid "Slider Direction"
 msgstr ""
 
-#: include/addons/htslider_addons.php:620
+#: include/addons/htslider_addons.php:632
 msgid "Slider Dots"
 msgstr ""
 
@@ -1379,12 +1387,12 @@ msgstr ""
 msgid "Slider Item 2"
 msgstr ""
 
-#: include/addons/htslider_addons.php:489
+#: include/addons/htslider_addons.php:501
 msgid "Slider Item To Scroll"
 msgstr ""
 
-#: include/addons/htslider_addons.php:392
-#: include/addons/htslider_addons.php:434
+#: include/addons/htslider_addons.php:404
+#: include/addons/htslider_addons.php:446
 msgid "Slider Item to Scroll"
 msgstr ""
 
@@ -1398,8 +1406,8 @@ msgstr ""
 #: include/addons/elementor_widgets.php:295
 #: include/addons/elementor_widgets.php:338
 #: include/addons/htslider_addons.php:244
-#: include/addons/htslider_addons.php:419
-#: include/addons/htslider_addons.php:474
+#: include/addons/htslider_addons.php:431
+#: include/addons/htslider_addons.php:486
 #: include/addons/htslider_scroll_navigation.php:147
 msgid "Slider Items"
 msgstr ""
@@ -1417,7 +1425,7 @@ msgid "Slider Navigation Style"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:133
-#: include/addons/htslider_addons.php:359
+#: include/addons/htslider_addons.php:371
 msgid "Slider Option"
 msgstr ""
 
@@ -1442,11 +1450,11 @@ msgstr ""
 msgid "Slides Content"
 msgstr ""
 
-#: include/addons/htslider_addons.php:368
+#: include/addons/htslider_addons.php:380
 msgid "Slides Items"
 msgstr ""
 
-#: include/addons/htslider_addons.php:345
+#: include/addons/htslider_addons.php:357
 #: include/addons/htslider_scroll_navigation.php:136
 msgid "Slides Limit"
 msgstr ""
@@ -1463,7 +1471,7 @@ msgstr ""
 msgid "Slides Source"
 msgstr ""
 
-#: include/addons/htslider_addons.php:864
+#: include/addons/htslider_addons.php:876
 msgid "Slides Style"
 msgstr ""
 
@@ -1487,7 +1495,7 @@ msgstr ""
 msgid "Style 2 (Pro)"
 msgstr ""
 
-#: include/addons/htslider_addons.php:987
+#: include/addons/htslider_addons.php:999
 msgid "Sub Title"
 msgstr ""
 
@@ -1511,12 +1519,12 @@ msgid "Successfully %s has been imported."
 msgstr ""
 
 #: include/addons/elementor_widgets.php:286
-#: include/addons/htslider_addons.php:407
+#: include/addons/htslider_addons.php:419
 msgid "Tablet"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:319
-#: include/addons/htslider_addons.php:449
+#: include/addons/htslider_addons.php:461
 msgid "Tablet Resolution"
 msgstr ""
 
@@ -1538,17 +1546,17 @@ msgstr ""
 msgid "Templates Library"
 msgstr ""
 
-#: include/addons/htslider_addons.php:574
+#: include/addons/htslider_addons.php:586
 msgid "Text (Pro)"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:363
-#: include/addons/htslider_addons.php:505
+#: include/addons/htslider_addons.php:517
 msgid "The resolution to mobile."
 msgstr ""
 
 #: include/addons/elementor_widgets.php:320
-#: include/addons/htslider_addons.php:450
+#: include/addons/htslider_addons.php:462
 msgid "The resolution to tablet."
 msgstr ""
 
@@ -1570,12 +1578,16 @@ msgid "There is no slide added"
 msgstr ""
 
 #: include/addons/htslider_addons.php:125
-#: include/addons/htslider_addons.php:945
+#: include/addons/htslider_addons.php:957
 msgid "Title"
 msgstr ""
 
 #: include/addons/htslider_addons.php:270
 msgid "Title HTML Tag"
+msgstr ""
+
+#: include/addons/htslider_addons.php:348
+msgid "To Exclude Slides, Enter  the slide id separated by ','"
 msgstr ""
 
 #: include/addons/htslider_scroll_navigation.php:357
@@ -1589,19 +1601,19 @@ msgstr ""
 msgid "Toggle this switch to hide the arrow button on responsive devices."
 msgstr ""
 
-#: include/addons/htslider_addons.php:794
+#: include/addons/htslider_addons.php:806
 #: include/addons/htslider_scroll_navigation.php:442
 msgid "Top"
 msgstr ""
 
-#: include/addons/htslider_addons.php:1180
+#: include/addons/htslider_addons.php:1192
 msgid "Top (Pro)"
 msgstr ""
 
-#: include/addons/htslider_addons.php:953
-#: include/addons/htslider_addons.php:995
-#: include/addons/htslider_addons.php:1036
-#: include/addons/htslider_addons.php:1237
+#: include/addons/htslider_addons.php:965
+#: include/addons/htslider_addons.php:1007
+#: include/addons/htslider_addons.php:1048
+#: include/addons/htslider_addons.php:1249
 msgid "Typography"
 msgstr ""
 
@@ -1630,7 +1642,7 @@ msgstr ""
 msgid "Use as featured image"
 msgstr ""
 
-#: include/addons/htslider_addons.php:659
+#: include/addons/htslider_addons.php:671
 msgid "Variable Width"
 msgstr ""
 
@@ -1638,13 +1650,13 @@ msgstr ""
 msgid "Vertical"
 msgstr ""
 
-#: include/addons/htslider_addons.php:672
+#: include/addons/htslider_addons.php:684
 msgid "Vertical Mode"
 msgstr ""
 
 #: include/addons/elementor_widgets.php:750
-#: include/addons/htslider_addons.php:1176
-#: include/addons/htslider_addons.php:1761
+#: include/addons/htslider_addons.php:1188
+#: include/addons/htslider_addons.php:1773
 #: include/addons/htslider_scroll_navigation.php:815
 msgid "Vertical Position"
 msgstr ""
@@ -1698,10 +1710,10 @@ msgstr ""
 #: include/addons/elementor_widgets.php:519
 #: include/addons/elementor_widgets.php:945
 #: include/addons/elementor_widgets.php:1030
-#: include/addons/htslider_addons.php:1082
-#: include/addons/htslider_addons.php:1493
-#: include/addons/htslider_addons.php:1991
-#: include/addons/htslider_addons.php:2086
+#: include/addons/htslider_addons.php:1094
+#: include/addons/htslider_addons.php:1505
+#: include/addons/htslider_addons.php:2003
+#: include/addons/htslider_addons.php:2098
 #: include/addons/htslider_scroll_navigation.php:588
 #: include/addons/htslider_scroll_navigation.php:761
 msgid "Width"
@@ -1743,7 +1755,7 @@ msgstr ""
 
 #: include/addons/elementor_widgets.php:216
 #: include/addons/elementor_widgets.php:228
-#: include/addons/htslider_addons.php:686
+#: include/addons/htslider_addons.php:698
 msgid "Yes"
 msgstr ""
 
