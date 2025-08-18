@@ -166,6 +166,21 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                 ]
             );
             htslider_pro_notice( $repeater,'content_source', 'elementor', Controls_Manager::RAW_HTML );
+            
+            // Add slide title control for pagination
+            $repeater->add_control(
+                'slide_title',
+                [
+                    'label'      => esc_html__( 'Slide Title', 'ht-slider' ),
+                    'type'       => Controls_Manager::TEXT,
+                    'default'    => esc_html__( 'Slide Title', 'ht-slider' ),
+                    'description'=> esc_html__( 'This title will be shown in pagination when enabled.', 'ht-slider' ),
+                    'condition' => [
+                        'content_source' =>'custom',
+                    ],
+                ]
+            );
+            
             $repeater->add_control(
                 'slider_raw_content',
                 [
@@ -203,19 +218,23 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                     'default' => [
 
                         [
+                            'slide_title'       => esc_html__( 'Welcome to HT Slider', 'ht-slider' ),
                             'slider_raw_content'    => '<h4 style="text-align: center;">Welcome to HT Slider</h4><h2 style="text-align: center;">We\'re excited to have you here!</h2><p style="text-align: center;">Welcome to HasThemes, your go-to destination for innovative solutions. Whether you are here to explore new products, get inspired, or learn about our services, we are thrilled to be part of your journey.</p><p style="text-align: center;"><a href="#">Explore Now</a></p>',
                             'content_source' => 'custom'
                         ],
                         [
+                            'slide_title'       => esc_html__( 'What We Offer', 'ht-slider' ),
                             'slider_raw_content'    => '<h4 style="text-align: center;"><span style="color: #ccffff;">What We Offer</span></h4><h2 style="text-align: center;"><span style="color: #ccffff;">Tailored services just for you</span></h2><p style="text-align: center;"><span style="color: #ccffff;">At HasThemes, we offer a range of customized services designed to meet your needs. From business solutions to top-notch customer support,we are dedicated to delivering the best experience possible.</span></p><p style="text-align: center;"><span style="color: #ccffff;"><a style="color: #ccffff;" href="#">Learn More</a></span></p>',
                             'content_source' => 'custom'
                         ],
                         [
+                            'slide_title'       => esc_html__( 'Join Our Community', 'ht-slider' ),
                             'slider_raw_content'    => '<h4 style="text-align: center;">Become Part of Our Community</h4><h2 style="text-align: center;">The best is yet to come</h2><p style="text-align: center;">Ready to take the next step? Join our community today and enjoy exclusive benefits, stay updated on new products, and get access to special offers and discounts. We can not wait to have you with us!</p><p style="text-align: center;"><a href="#">Sign Up Now</a></p>',
                             'content_source' => 'custom',
                         ],
 
                     ],
+                    'title_field' => '{{{ slide_title }}}',
                 ]
             );
             $this->add_control(
@@ -340,6 +359,60 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                     'default' => 'yes',
                 ]
             );
+            
+            // NEW: Pagination Title Controls
+            $this->add_control(
+                'show_pagination_title',
+                [
+                    'label' => esc_html__( 'Show Pagination Title', 'ht-slider' ) . ' <span class="ht-slider-new-badge">' . esc_html__('New') . '</span>',
+                    'type' => Controls_Manager::SWITCHER,
+                    'return_value' => 'yes',
+                    'default' => 'no',
+                    'condition' => [
+                        'slider_dots' => 'yes',
+                    ],
+                    'separator' => 'before',
+                ]
+            );
+            
+            $this->add_control(
+                'pagination_title_trigger',
+                [
+                    'label' => esc_html__( 'Show Title On', 'ht-slider' ),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'hover',
+                    'options' => [
+                        'hover' => esc_html__( 'Hover', 'ht-slider' ),
+                        'active' => esc_html__( 'Active Only', 'ht-slider' ),
+                        'both' => esc_html__( 'Both Hover & Active', 'ht-slider' ),
+                        'always' => esc_html__( 'Always Visible', 'ht-slider' ),
+                    ],
+                    'condition' => [
+                        'slider_dots' => 'yes',
+                        'show_pagination_title' => 'yes',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'pagination_title_position',
+                [
+                    'label' => esc_html__( 'Title Position', 'ht-slider' ),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'left',
+                    'options' => [
+                        'top' => esc_html__( 'Top', 'ht-slider' ),
+                        'bottom' => esc_html__( 'Bottom', 'ht-slider' ),
+                        'left' => esc_html__( 'Left', 'ht-slider' ),
+                        'right' => esc_html__( 'Right', 'ht-slider' ),
+                    ],
+                    'condition' => [
+                        'slider_dots' => 'yes',
+                        'show_pagination_title' => 'yes',
+                    ],
+                ]
+            );
+            
             $this->add_control(
                 'slide_custom_menu',
                 [
@@ -349,6 +422,7 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                     'default' => 'no',
                     'description' => esc_html( 'Enable this feature to allow the slider to scroll when clicking on the header menu.', 'ht-slider' ),
                     'classes' => 'htslider-disable-control',
+                    'separator' => 'before',
                 ]
             );
             $this->add_control(
@@ -605,6 +679,28 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                         ]
                     );
                     $this->add_control(
+                        'scroll_navigation_pagination_inner_space',
+                        [
+                            'label' => esc_html__( 'Inner Space', 'ht-slider' ),
+                            'type' => Controls_Manager::SLIDER,
+                            'size_units' => [ 'px' ],
+                            'range' => [
+                                'px' => [
+                                    'min' => 0,
+                                    'max' => 200,
+                                    'step' => 1,
+                                ]
+                            ],
+                            'default' => [
+                                'unit' => 'px',
+                                'size' => 10,
+                            ],
+                            'selectors' => [
+                                '{{WRAPPER}} .htslider-swiper-pagination' => 'gap: {{SIZE}}{{UNIT}};',
+                            ],
+                        ]
+                    );
+                    $this->add_control(
                         'scroll_navigation_pagination_opacity',
                         [
                             'label' => esc_html__( 'Opacity', 'ht-slider' ),
@@ -694,6 +790,176 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
             $this->end_controls_tabs();
 
         $this->end_controls_section(); // Style slider dots style end
+        
+        // NEW: Pagination Title Style Section
+        $this->start_controls_section(
+            'pagination_title_style_section',
+            [
+                'label' => esc_html__( 'Pagination Title', 'ht-slider' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'slider_dots' => 'yes',
+                    'show_pagination_title' => 'yes',
+                ],
+            ]
+        );
+            
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'pagination_title_typography',
+                    'label' => esc_html__( 'Typography', 'ht-slider' ),
+                    'selector' => '{{WRAPPER}} .htslider-pagination-title',
+                ]
+            );
+            
+            $this->add_control(
+                'pagination_title_color',
+                [
+                    'label' => esc_html__( 'Color', 'ht-slider' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#ffffff',
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-pagination-title' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'pagination_title_bg_color',
+                [
+                    'label' => esc_html__( 'Background Color', 'ht-slider' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => 'rgba(0, 0, 0, 0.8)',
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-pagination-title' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .htslider-pagination-title-left .htslider-pagination-title::before' => 'border-left-color: {{VALUE}};',
+                        '{{WRAPPER}} .htslider-pagination-title-right .htslider-pagination-title::before' => 'border-right-color: {{VALUE}};',
+                        '{{WRAPPER}} .htslider-pagination-title-top .htslider-pagination-title::before' => 'border-top-color: {{VALUE}};',
+                        '{{WRAPPER}} .htslider-pagination-title-bottom .htslider-pagination-title::before' => 'border-bottom-color: {{VALUE}};',
+                    ],
+                ]
+            );
+            
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'pagination_title_border',
+                    'label' => esc_html__( 'Border', 'ht-slider' ),
+                    'selector' => '{{WRAPPER}} .htslider-pagination-title',
+                ]
+            );
+            
+            $this->add_responsive_control(
+                'pagination_title_border_radius',
+                [
+                    'label' => esc_html__( 'Border Radius', 'ht-slider' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-pagination-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+            
+            $this->add_responsive_control(
+                'pagination_title_padding',
+                [
+                    'label' => esc_html__( 'Padding', 'ht-slider' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em' ],
+                    'default' => [
+                        'top' => 8,
+                        'right' => 12,
+                        'bottom' => 8,
+                        'left' => 12,
+                        'unit' => 'px',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-pagination-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+            
+            $this->add_responsive_control(
+                'pagination_title_margin',
+                [
+                    'label' => esc_html__( 'Margin', 'ht-slider' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%', 'em' ],
+                    'default' => [
+                        'top' => 0,
+                        'right' => 0,
+                        'bottom' => 10,
+                        'left' => 0,
+                        'unit' => 'px',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .htslider-pagination-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+            
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'pagination_title_box_shadow',
+                    'label' => esc_html__( 'Box Shadow', 'ht-slider' ),
+                    'selector' => '{{WRAPPER}} .htslider-pagination-title',
+                ]
+            );
+            
+            // Animation Controls
+            $this->add_control(
+                'pagination_title_animation_heading',
+                [
+                    'label' => esc_html__( 'Animation', 'ht-slider' ),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
+            
+            $this->add_control(
+                'pagination_title_animation',
+                [
+                    'label' => esc_html__( 'Entrance Animation', 'ht-slider' ),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'fadeIn',
+                    'options' => [
+                        'none' => esc_html__( 'None', 'ht-slider' ),
+                        'fadeIn' => esc_html__( 'Fade In', 'ht-slider' ),
+                        'slideUp' => esc_html__( 'Slide Up', 'ht-slider' ),
+                        'slideDown' => esc_html__( 'Slide Down', 'ht-slider' ),
+                        'slideLeft' => esc_html__( 'Slide Left', 'ht-slider' ),
+                        'slideRight' => esc_html__( 'Slide Right', 'ht-slider' ),
+                        'zoomIn' => esc_html__( 'Zoom In', 'ht-slider' ),
+                        'bounceIn' => esc_html__( 'Bounce In', 'ht-slider' ),
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'pagination_title_animation_duration',
+                [
+                    'label' => esc_html__( 'Animation Duration (ms)', 'ht-slider' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 100,
+                            'max' => 2000,
+                            'step' => 50,
+                        ],
+                    ],
+                    'default' => [
+                        'size' => 300,
+                    ],
+                    'condition' => [
+                        'pagination_title_animation!' => 'none',
+                    ],
+                ]
+            );
+            
+        $this->end_controls_section(); // Pagination Title Style Section End
 
         $this->start_controls_section(  // Slider arrow style 
             'htslider_arrow_style',
@@ -1066,7 +1332,12 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
             'pagination'        => ('yes' === $settings['slider_dots']),
             'speed'             => absint( $settings['slider_speed'] ),
             'initialslide'      => absint( $settings['initial_slider'] ) - 1,
-            'slide_custom_menu'        => false,
+            'slide_custom_menu' => false,
+            'show_pagination_title' => ('yes' === $settings['show_pagination_title']),
+            'pagination_title_trigger' => $settings['pagination_title_trigger'],
+            'pagination_title_position' => $settings['pagination_title_position'],
+            'pagination_title_animation' => $settings['pagination_title_animation'],
+            'pagination_title_animation_duration' => $settings['pagination_title_animation_duration']['size'] ?? 300,
         ];
         $this->add_render_attribute( 'swiperslider_area_attr', 'data-settings', wp_json_encode( $slider_settings ) );
         if ( $settings['slides_source'] == 'ht_slider_slides' && empty( $sliderpost_ids ) ) {
@@ -1086,7 +1357,7 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                      if ( $settings['slides_source'] == 'ht_slider_slides' ) {
                         if ( !empty( $sliderpost_ids ) ) {
                             foreach ( $sliderpost_ids as $sliderpost_id ) {
-                                echo '<div class="swiper-slide">'.htslider_render_build_content( $sliderpost_id ).'</div>';
+                                echo '<div class="swiper-slide" data-slide-title="' . esc_attr(get_the_title($sliderpost_id)) . '">'.htslider_render_build_content( $sliderpost_id ).'</div>';
                             }
                         } else {
                             echo "<div class='htslider-error-notice'>" . esc_html__( 'There are no slides in this query','ht-slider' ) . "</div>";
@@ -1097,9 +1368,9 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                         if ( !empty( $settings['navigator_content_list'] ) ) {                        
                             // Loop through each item in 'navigator_content_list'
                             foreach ( $settings['navigator_content_list'] as $navigatorcontent ) :
-            
+                                $slide_title = !empty($navigatorcontent['slide_title']) ? $navigatorcontent['slide_title'] : strip_tags($navigatorcontent['slider_raw_content']);
                                 ?>
-                                <div class="swiper-slide elementor-repeater-item-<?php echo esc_attr( $navigatorcontent['_id'] ); ?>">
+                                <div class="swiper-slide elementor-repeater-item-<?php echo esc_attr( $navigatorcontent['_id'] ); ?>" data-slide-title="<?php echo esc_attr($slide_title); ?>">
                                     
                                     <?php 
                                     if ( !empty( $navigatorcontent['slider_raw_content'] ) ) {

@@ -92,3 +92,13 @@
 .elementor-templates-modal .dialog-widget-content {
   max-width: 1920px;
 }
+
+/* ADD THIS CSS FOR THE NEW BADGE STYLING */
+span.ht-slider-new-badge {
+  background: #4caf50;
+  color: #ffffff;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  display: inline-block;
+}

@@ -648,12 +648,6 @@
 		margin-left: 0px;
 	}
 
-
-
-
-
-
-
 	/*custom slider*/
 	.htslider-item-img.single-slide-item.htslider-single-post-slide {
 	  height: 600px;
@@ -1043,4 +1037,325 @@
 
 .htslider-progress-bottom.htslider-progress {
     bottom: 0;
+}
+/* ==========================================================================
+   Pagination Title Styles - NEW ADDITION
+   ========================================================================== */
+
+/* Base pagination title styles */
+.htslider-pagination-with-title .swiper-pagination-bullet {
+    position: relative;
+}
+
+.htslider-pagination-title {
+    position: absolute;
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Position variations */
+.htslider-pagination-title-top .htslider-pagination-title {
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+}
+
+.htslider-pagination-title-bottom .htslider-pagination-title {
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+}
+
+.htslider-pagination-title-left .htslider-pagination-title {
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%) scale(0.8);
+}
+
+.htslider-pagination-title-right .htslider-pagination-title {
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%) scale(0.8);
+}
+
+/* Trigger states */
+.htslider-pagination-trigger-always .htslider-pagination-title,
+.htslider-pagination-trigger-hover .swiper-pagination-bullet:hover .htslider-pagination-title,
+.htslider-pagination-trigger-active .swiper-pagination-bullet-active .htslider-pagination-title,
+.htslider-pagination-trigger-both .swiper-pagination-bullet:hover .htslider-pagination-title,
+.htslider-pagination-trigger-both .swiper-pagination-bullet-active .htslider-pagination-title,
+.htslider-pagination-title-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* Position-specific visible transforms */
+.htslider-pagination-title-top .htslider-pagination-title-visible,
+.htslider-pagination-title-top .swiper-pagination-bullet:hover .htslider-pagination-title,
+.htslider-pagination-title-top .swiper-pagination-bullet-active .htslider-pagination-title {
+    transform: translateX(-50%) scale(1);
+}
+
+.htslider-pagination-title-bottom .htslider-pagination-title-visible,
+.htslider-pagination-title-bottom .swiper-pagination-bullet:hover .htslider-pagination-title,
+.htslider-pagination-title-bottom .swiper-pagination-bullet-active .htslider-pagination-title {
+    transform: translateX(-50%) scale(1);
+}
+
+.htslider-pagination-title-left .htslider-pagination-title-visible,
+.htslider-pagination-title-left .swiper-pagination-bullet:hover .htslider-pagination-title,
+.htslider-pagination-title-left .swiper-pagination-bullet-active .htslider-pagination-title {
+    transform: translateY(-50%) scale(1);
+}
+
+.htslider-pagination-title-right .htslider-pagination-title-visible,
+.htslider-pagination-title-right .swiper-pagination-bullet:hover .htslider-pagination-title,
+.htslider-pagination-title-right .swiper-pagination-bullet-active .htslider-pagination-title {
+    transform: translateY(-50%) scale(1);
+}
+
+/* Animation classes */
+.htslider-animation-in {
+    animation-fill-mode: both;
+}
+
+.htslider-animation-out {
+    animation-fill-mode: both;
+}
+
+/* Animation variations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from { 
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from { 
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply animations */
+.htslider-pagination-animation-fadeIn .htslider-animation-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.htslider-pagination-animation-slideUp .htslider-animation-in {
+    animation: slideUp 0.3s ease;
+}
+
+.htslider-pagination-animation-slideDown .htslider-animation-in {
+    animation: slideDown 0.3s ease;
+}
+
+.htslider-pagination-animation-slideLeft .htslider-animation-in {
+    animation: slideLeft 0.3s ease;
+}
+
+.htslider-pagination-animation-slideRight .htslider-animation-in {
+    animation: slideRight 0.3s ease;
+}
+
+.htslider-pagination-animation-zoomIn .htslider-animation-in {
+    animation: zoomIn 0.3s ease;
+}
+
+.htslider-pagination-animation-bounceIn .htslider-animation-in {
+    animation: bounceIn 0.5s ease;
+}
+
+/* Special handling for position-specific animations */
+.htslider-pagination-title-top.htslider-pagination-animation-slideUp .htslider-pagination-title,
+.htslider-pagination-title-bottom.htslider-pagination-animation-slideDown .htslider-pagination-title,
+.htslider-pagination-title-left.htslider-pagination-animation-slideLeft .htslider-pagination-title,
+.htslider-pagination-title-right.htslider-pagination-animation-slideRight .htslider-pagination-title {
+    transform-origin: center;
+}
+
+/* Arrow/pointer for tooltip-like appearance */
+.htslider-pagination-title::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+}
+
+.htslider-pagination-title-top .htslider-pagination-title::before {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+.htslider-pagination-title-bottom .htslider-pagination-title::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: rgba(0, 0, 0, 0.8);
+}
+
+.htslider-pagination-title-left .htslider-pagination-title::before {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: rgba(0, 0, 0, 0.8);
+}
+
+.htslider-pagination-title-right .htslider-pagination-title::before {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .htslider-pagination-title {
+        font-size: 12px;
+        padding: 6px 10px;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@media (max-width: 480px) {
+    .htslider-pagination-title {
+        font-size: 11px;
+        padding: 4px 8px;
+        max-width: 150px;
+    }
+}
+
+/* RTL Support */
+body.rtl .htslider-pagination-title-left .htslider-pagination-title {
+    right: auto;
+    left: calc(100% + 10px);
+}
+
+body.rtl .htslider-pagination-title-right .htslider-pagination-title {
+    left: auto;
+    right: calc(100% + 10px);
+}
+
+body.rtl .htslider-pagination-title-left .htslider-pagination-title::before {
+    left: auto;
+    right: 100%;
+    border-left-color: transparent;
+    border-right-color: rgba(0, 0, 0, 0.8);
+}
+
+body.rtl .htslider-pagination-title-right .htslider-pagination-title::before {
+    right: auto;
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Accessibility improvements */
+.htslider-pagination-title {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Prevent title overflow on small screens */
+.htslider-swiper-pagination {
+    position: relative;
+    overflow: visible;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.htslider-swiper-pagination .swiper-pagination-bullet{	
+	margin: 0!important;
+	
+}
+
+/* Ensure titles don't interfere with slider controls */
+.htslider-pagination-title {
+    z-index: 9999;
 }

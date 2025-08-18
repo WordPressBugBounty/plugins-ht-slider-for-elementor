@@ -1,7 +1,7 @@
 (function($){
 "use strict";
 
-  // Carousel Handler
+    // Carousel Handler
     var WidgetHtsliderCarouselHandler = function ($scope, $) {
 
         var carousel_elem = $scope.find( '.htslider-carousel-activation' ).eq(0);
@@ -194,66 +194,175 @@
         }
     }
     /*======= Scroll Navigation Activation ========*/
-    var WidgetNavigationScrollHandler = function ($scope, $) {
-        
-        var swiper_elem = $scope.find('.swiper-container').eq(0);
-        var swiper_opt = swiper_elem.data('settings');
-        if( !swiper_elem[0] ){
-            return;
-        }
-
-        // var tablet_width = parseInt( swiper_opt.tablet_width );
-        // var mobile_width = parseInt( swiper_opt.mobile_width );
-        //var swiper = new Swiper( swiper_elem, { for verson 5.6
-        var swiper = new Swiper(swiper_elem[0], { // for js version 8.0.3
+    var WidgetNavigationScrollHandler  = function ($scope) {
+        var $slider = $scope.find('.swiper-container');
+        if (!$slider.length) { return; }
+    
+        var swiper_opt = $slider.data('settings');
+        if (typeof swiper_opt === 'undefined') { return; }
+    
+        var sliderOptions = {
             direction: swiper_opt.direction,
             slidesPerView: swiper_opt.slideitem,
             initialSlide: swiper_opt.initialslide,
             spaceBetween: 0,
-            simulateTouch:swiper_opt.simulateTouch,
-            mousewheel: {
-                releaseOnEdges:true,
-            },
+            mousewheelControl: true,
+            mousewheel: swiper_opt.mousewheel ? {
+                releaseOnEdges: true
+            } : false,
+            simulateTouch: swiper_opt.simulateTouch,
             speed: swiper_opt.speed,
-            pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
+            pagination: swiper_opt.pagination ? {
+                el: '.htslider-swiper-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    var $slide = $(this.slides[index]);
+                    var slideTitle = $slide.data('slide-title') || $slide.find('.htslider-scroll-navigation-content').text().trim();
+                    
+                    if (swiper_opt.show_pagination_title) {
+                        return '<span class="' + className + '" data-title="' + slideTitle + '"><span class="htslider-pagination-title">' + slideTitle + '</span></span>';
+                    }
+                    return '<span class="' + className + '" data-title="' + slideTitle + '"></span>';
+                }
+            } : false,
+            on: {
+                init: function() {
+                    var swiper = this;
+                    var settings = swiper_opt;
+                    
+                    if (settings.show_pagination_title && this.params.pagination && this.params.pagination.el) {
+                        var $paginationEl = $(this.params.pagination.el);
+                        $paginationEl.addClass('htslider-pagination-with-title');
+                        $paginationEl.addClass('htslider-pagination-title-' + settings.pagination_title_position);
+                        $paginationEl.addClass('htslider-pagination-trigger-' + settings.pagination_title_trigger);
+                        
+                        // Add animation class if specified
+                        if (settings.pagination_title_animation && settings.pagination_title_animation !== 'none') {
+                            $paginationEl.addClass('htslider-pagination-animation-' + settings.pagination_title_animation);
+                        }
+                        
+                        // Set animation duration
+                        var animationDuration = settings.pagination_title_animation_duration || 300;
+                        $paginationEl.find('.htslider-pagination-title').css('transition-duration', animationDuration + 'ms');
+                        
+                        // Setup hover functionality
+                        setupPaginationTitleEvents(swiper, settings);
+                        
+                        // Set initial active state
+                        updateActiveTitle(swiper, settings);
+                    }
+                },
+                slideChange: function() {
+                    var swiper = this;
+                    var settings = swiper_opt;
+                    
+                    if (settings.show_pagination_title) {
+                        updateActiveTitle(swiper, settings);
+                    }
+                }
             },
-            navigation: {
+            navigation: swiper_opt.arrow ? {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
-            },
-            keyboard: {
-                enabled: swiper_opt.keyboardscroll,
+            } : false,
+            keyboard: swiper_opt.keyboardscroll ? {
+                enabled: true,
                 onlyInViewport: false,
-            },
-            // breakpoints: {
-            //     [tablet_width]: {
-            //       direction: swiper_opt.tablet_direction,
-            //     },
-            //     [mobile_width]: {
-            //         direction: swiper_opt.mobile_direction,
-            //       }
-
-            //   }
-        });
-
-        if( swiper_opt.mousewheel == false){
+            } : false
+        };
+    
+        var swiper = new Swiper($slider[0], sliderOptions);
+    
+        if (!swiper_opt.mousewheel) {
             swiper.mousewheel.disable();
         }
+    
         if( true == swiper_opt.slide_custom_menu ) {
-        $('a[href^="#htslider-scroll-slide"]').on('click', function (e) {
-            e.preventDefault();
-
-            var fullIndex = $(this).attr('href');
-            var slideIndex = parseInt(fullIndex.replace('#htslider-scroll-slide-',''), 0);
-            if( fullIndex !== slideIndex && slideIndex > 0 ){
-                swiper.slideTo(slideIndex-1); 
+            $('a[href^="#htslider-scroll-slide"]').on('click', function (e) {
+                e.preventDefault();
+                var fullIndex = $(this).attr('href');
+                var slideIndex = parseInt(fullIndex.replace('#htslider-scroll-slide-',''), 0);
+                if (fullIndex !== slideIndex && slideIndex > 0) {
+                    swiper.slideTo(slideIndex - 1);
+                }
+            });
+        }
+        
+        // Helper function to setup pagination title events
+        function setupPaginationTitleEvents(swiper, settings) {
+            var $bullets = $(swiper.pagination.el).find('.swiper-pagination-bullet');
+            
+            $bullets.each(function(index) {
+                var $bullet = $(this);
+                var $title = $bullet.find('.htslider-pagination-title');
+                
+                // Mouse enter event
+                $bullet.on('mouseenter', function() {
+                    if (settings.pagination_title_trigger === 'hover' || 
+                        settings.pagination_title_trigger === 'both' || 
+                        settings.pagination_title_trigger === 'always') {
+                        showTitle($title, settings);
+                    }
+                });
+                
+                // Mouse leave event
+                $bullet.on('mouseleave', function() {
+                    if (settings.pagination_title_trigger === 'hover' && !$bullet.hasClass('swiper-pagination-bullet-active')) {
+                        hideTitle($title, settings);
+                    } else if (settings.pagination_title_trigger === 'both' && !$bullet.hasClass('swiper-pagination-bullet-active')) {
+                        hideTitle($title, settings);
+                    }
+                });
+            });
+        }
+        
+        // Helper function to update active title
+        function updateActiveTitle(swiper, settings) {
+            var $bullets = $(swiper.pagination.el).find('.swiper-pagination-bullet');
+            var $activeBullet = $bullets.eq(swiper.realIndex);
+            var $activeTitle = $activeBullet.find('.htslider-pagination-title');
+            
+            // Hide all titles first
+            $bullets.find('.htslider-pagination-title').each(function() {
+                if (settings.pagination_title_trigger !== 'always') {
+                    hideTitle($(this), settings);
+                }
+            });
+            
+            // Show active title if needed
+            if (settings.pagination_title_trigger === 'active' || 
+                settings.pagination_title_trigger === 'both' || 
+                settings.pagination_title_trigger === 'always') {
+                showTitle($activeTitle, settings);
             }
-          });
+        }
+        
+        // Helper function to show title with animation
+        function showTitle($title, settings) {
+            if (!$title.length) return;
+            
+            $title.addClass('htslider-pagination-title-visible');
+            
+            // Apply animation class
+            if (settings.pagination_title_animation && settings.pagination_title_animation !== 'none') {
+                $title.removeClass('htslider-animation-out').addClass('htslider-animation-in htslider-animation-' + settings.pagination_title_animation);
+            }
+        }
+        
+        // Helper function to hide title with animation
+        function hideTitle($title, settings) {
+            if (!$title.length) return;
+            
+            if (settings.pagination_title_trigger === 'always') return;
+            
+            $title.removeClass('htslider-pagination-title-visible');
+            
+            // Apply animation class
+            if (settings.pagination_title_animation && settings.pagination_title_animation !== 'none') {
+                $title.removeClass('htslider-animation-in').addClass('htslider-animation-out');
+            }
         }
     }
-
 
     // Run this code under Elementor.
     $(window).on('elementor/frontend/init', function () {

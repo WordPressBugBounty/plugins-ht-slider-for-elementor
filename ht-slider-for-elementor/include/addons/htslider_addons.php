@@ -341,7 +341,7 @@ class Htsliderpro_Elementor_Widget_Sliders extends Widget_Base {
             $this->add_control(
                 "exclude_slides",
                 [
-                    'label' => esc_html__( 'Exclude Slides', 'ht-slider' ),
+                    'label' => esc_html__( 'Exclude Slides', 'ht-slider' ) . ' <span class="ht-slider-new-badge">' . esc_html__('New') . '</span>',
                     'type' => Controls_Manager::TEXT,
                     'label_block' => true,
                     'placeholder' => esc_html__( 'Example: 10,11,105', 'ht-slider' ),
