@@ -129,7 +129,21 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                     ]
                 ]
             );
-            
+
+            $this->add_control(
+                "exclude_slides",
+                [
+                    'label' => esc_html__( 'Exclude Slides', 'ht-slider' ) . ' <span class="ht-slider-new-badge">' . esc_html__('New', 'ht-slider') . '</span>',
+                    'type' => Controls_Manager::TEXT,
+                    'label_block' => true,
+                    'placeholder' => esc_html__( 'Example: 10,11,105', 'ht-slider' ),
+                    'description' => esc_html__( "To Exclude Slides, Enter  the slide id separated by ','", 'ht-slider' ),
+                    'condition' => [
+                        'slider_show_by' => 'show_bycat',
+                    ]
+                ]
+            ); 
+
             $this->add_control(
                 'slider_limit',
                 [
@@ -364,7 +378,7 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
             $this->add_control(
                 'show_pagination_title',
                 [
-                    'label' => esc_html__( 'Show Pagination Title', 'ht-slider' ) . ' <span class="ht-slider-new-badge">' . esc_html__('New') . '</span>',
+                    'label' => esc_html__( 'Show Pagination Title', 'ht-slider' ) . ' <span class="ht-slider-new-badge">' . esc_html__('New', 'ht-slider') . '</span>',
                     'type' => Controls_Manager::SWITCHER,
                     'return_value' => 'yes',
                     'default' => 'no',
@@ -1275,6 +1289,7 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
+        $exclude_slides = $settings['exclude_slides'];
 
         // check content source is ht_slider_slides
         if ( $settings['slides_source'] == 'ht_slider_slides' ) {
@@ -1309,6 +1324,15 @@ class HTSlider_Elementor_Widget_Scroll_Navigation extends Widget_Base {
                     }
                 }
             }
+
+            // Exclude slides check
+            if ( !empty( $exclude_slides ) ) {
+                $exclude_slides = sanitize_text_field( $exclude_slides );
+
+                $exclude_slides = explode( ',', $exclude_slides );
+                $args['post__not_in'] =  $exclude_slides;
+            }
+
             $sliders = new \WP_Query( $args );
     
             $sliderpost_ids = array();

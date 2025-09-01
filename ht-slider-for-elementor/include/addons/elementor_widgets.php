@@ -101,7 +101,19 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                     ]
                 ]
             );
-            
+            $this->add_control(
+                "exclude_slides",
+                [
+                    'label' => esc_html__( 'Exclude Slides', 'ht-slider' ) . ' <span class="ht-slider-new-badge">' . esc_html__('New', 'ht-slider') . '</span>',
+                    'type' => Controls_Manager::TEXT,
+                    'label_block' => true,
+                    'placeholder' => esc_html__( 'Example: 10,11,105', 'ht-slider' ),
+                    'description' => esc_html__( "To Exclude Slides, Enter  the slide id separated by ','", 'ht-slider' ),
+                    'condition' => [
+                        'slider_show_by' => 'show_bycat',
+                    ]
+                ]
+            ); 
             $this->add_control(
                 'slider_limit',
                 [
@@ -1058,6 +1070,7 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
+        $exclude_slides = $settings['exclude_slides'];
         $postorder  = $settings['postorder'];
         $id = $this->get_id();
         $args = array(
@@ -1090,6 +1103,13 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
                     );
                 }
             }
+        }
+        // Exclude slides check
+        if (  !empty( $exclude_slides ) ) {
+            $exclude_slides = sanitize_text_field( $exclude_slides );
+
+            $exclude_slides = explode( ',', $exclude_slides );
+            $args['post__not_in'] =  $exclude_slides;
         }
         $sliders = new \WP_Query( $args );
 
