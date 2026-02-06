@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HT Slider for Elementor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-01 06:43+0000\n"
+"POT-Creation-Date: 2025-11-17 08:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.26\n"
+"X-Loco-Version: 2.8.0; wp-6.8.3; php-8.2.26\n"
 "X-Domain: ht-slider"
 
 #: include/helpers_function.php:198
@@ -22,7 +22,7 @@ msgstr ""
 
 #. 1: Plugin name 2: Elementor 3: Required Elementor version
 #. 1: Plugin name 2: PHP 3: Required PHP version
-#: include/class.htslider.php:136 include/class.htslider.php:152
+#: include/class.htslider.php:139 include/class.htslider.php:155
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
 msgstr ""
@@ -34,7 +34,7 @@ msgstr ""
 
 #. %1$s: strong tag start
 #. %2$s: strong tag end
-#: include/class.htslider.php:107
+#: include/class.htslider.php:110
 #, php-format
 msgid ""
 "%1$sHTSlider Addons for Elementor%2$s requires %1$s\"Elementor\"%2$s plugin "
@@ -43,7 +43,7 @@ msgstr ""
 
 #. %1$s: strong tag start
 #. %2$s: strong tag end
-#: include/class.htslider.php:120
+#: include/class.htslider.php:123
 #, php-format
 msgid ""
 "%1$sHTSlider Addons for Elementor%2$s requires %1$s\"Elementor\"%2$s plugin "
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Activate"
 msgstr ""
 
-#: include/class.htslider.php:109
+#: include/class.htslider.php:112
 msgid "Activate Elementor"
 msgstr ""
 
@@ -505,7 +505,7 @@ msgstr ""
 msgid "Edit Template"
 msgstr ""
 
-#: include/class.htslider.php:138
+#: include/class.htslider.php:141
 msgid "Elementor"
 msgstr ""
 
@@ -600,7 +600,7 @@ msgstr ""
 msgid "Full Screen"
 msgstr ""
 
-#: include/class.htslider.php:199
+#: include/class.htslider.php:202
 msgid "Go Pro"
 msgstr ""
 
@@ -746,7 +746,7 @@ msgstr ""
 msgid "HT Scroll Navigation Slider"
 msgstr ""
 
-#: include/class.htslider.php:78 include/class.htslider.php:168
+#: include/class.htslider.php:81 include/class.htslider.php:171
 #: include/addons/htslider_addons.php:59
 #: include/addons/htslider_scroll_navigation.php:59
 msgid "HT Slider"
@@ -810,11 +810,11 @@ msgstr ""
 msgid "HTML tag supported"
 msgstr ""
 
-#: include/class.htslider.php:153
+#: include/class.htslider.php:156
 msgid "HTSlider Addons"
 msgstr ""
 
-#: include/class.htslider.php:137
+#: include/class.htslider.php:140
 msgid "HTSlider Addons for Elementor"
 msgstr ""
 
@@ -920,7 +920,7 @@ msgstr ""
 msgid "Insert into item"
 msgstr ""
 
-#: include/class.htslider.php:122
+#: include/class.htslider.php:125
 msgid "Install Elementor"
 msgstr ""
 
@@ -1201,7 +1201,7 @@ msgstr ""
 msgid "Pause on Hover?"
 msgstr ""
 
-#: include/class.htslider.php:154
+#: include/class.htslider.php:157
 msgid "PHP"
 msgstr ""
 
@@ -1354,7 +1354,7 @@ msgstr ""
 msgid "Set featured image"
 msgstr ""
 
-#: include/class.htslider.php:195
+#: include/class.htslider.php:198
 msgid "Settings"
 msgstr ""
 
@@ -1732,7 +1732,7 @@ msgstr ""
 msgid "Update Item"
 msgstr ""
 
-#: include/class.htslider.php:271 include/class.htslider.php:272
+#: include/class.htslider.php:276 include/class.htslider.php:277
 msgid "Upgrade to Pro"
 msgstr ""
 

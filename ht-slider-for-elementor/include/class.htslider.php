@@ -28,6 +28,9 @@ final class HTSlider_Addons_Elementor {
         add_action( 'admin_menu', [$this, 'upgrade_to_pro_menu'], 329 );
         add_action('admin_head', [ $this, 'admin_menu_item_adjust'] );
         add_action('admin_head', [ $this, 'enqueue_admin_head_scripts'], 11 );
+        
+        // Promotional Banner
+        add_action( 'admin_notices', [ $this, 'show_promotional_banner' ] );
     }
     public function i18n() {
         load_plugin_textdomain( 'ht-slider' );
@@ -249,6 +252,8 @@ final class HTSlider_Addons_Elementor {
         require_once HTSLIDER_PL_INCLUDE. '/admin/Class_Recommended_Plugins.php' ;
         add_action('init',  function() {
             require_once HTSLIDER_PL_INCLUDE. '/admin/recommendation-plugins.php' ;
+            require_once HTSLIDER_PL_INCLUDE. '/admin/class-notice-manager.php' ;
+            require_once HTSLIDER_PL_INCLUDE. '/admin/class-notices.php' ;
         });
         require_once HTSLIDER_PL_INCLUDE. '/admin/template-library.php' ;
         require_once HTSLIDER_PL_INCLUDE.'/helpers_function.php';
@@ -305,6 +310,7 @@ final class HTSlider_Addons_Elementor {
         $scripts = '';
 
         $styles .= '#adminmenu a.ht-slider-upgrade-pro { font-weight: 600; background-color: #D43A6B; color: #ffffff; display: block; text-align: left;}';
+        $styles .= '.htslider-promotional-banner .notice-dismiss:before { color: #ddd; }';
         $scripts .= 'jQuery(document).ready( function($) {
 			$("#adminmenu a.ht-slider-upgrade-pro").attr("target","_blank");  
 		});';
@@ -313,6 +319,21 @@ final class HTSlider_Addons_Elementor {
 		printf( '<style>%s</style>', $styles );
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		printf( '<script>%s</script>', $scripts );
+    }
+
+    /**
+     * Show promotional banner
+     */
+    public function show_promotional_banner() {
+        $noticeManager = HTSlider_Notice_Manager::instance();
+        $notices = $noticeManager->get_notices_info();
+        if(!empty($notices)) {
+            foreach ($notices as $notice) {
+                if(empty($notice['disable'])) {
+                    HTSlider_Notice::set_notice($notice);
+                }
+            }
+        }
     }
 
 }

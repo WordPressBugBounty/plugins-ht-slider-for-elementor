@@ -2,8 +2,8 @@
 Contributors: hasthemes, htplugins, devitemsllc, zenaulislam, aslamhasib, tarekht, madhusudandev
 Tags: Slider, Elementor, Widgets, Post type slider, Elementor Addons
 Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 1.7.1
+Tested up to: 6.9
+Stable tag: 1.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -210,6 +210,27 @@ HT Slider allows you to design and customize banner sliders that can effectively
 
 
 == Changelog ==
+
+= Version: 1.7.6 - Date: 2026-01-01 =
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
+
+= Version: 1.7.5 - Date: 2025-12-10 =
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
+* Tested: Compatibility with the latest version of WordPress.
+
+= Version: 1.7.4 - Date: 2025-11-17 =
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
+
+= Version: 1.7.3 - Date: 2025-10-23 =
+* Improved: Minor UI update and optimizations.
+* Tested: Compatibility with the latest version of Elementor.
+
+= Version: 1.7.2 - Date: 2025-10-12 =
+* Tested: Compatibility with latest version of Elementor.
+* Tested: Compatibility with PHP Version 8.4.0
 
 = Version: 1.7.1 - Date: 2025-09-01 =
 * Added: Exclude Slides option in HT Scroll Navigation and HT Slider widgets when displaying by slide category.

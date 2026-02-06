@@ -1,0 +1,26 @@
+[
+    {
+        "id": "htslider-notice-17-11-2025",
+        "message": "",
+        "banner": {
+            "url": "https://hasthemes.com/plugins/wordpress-notification-bar-plugin/",
+            "image": "<img src='https://feed.hasthemes.com/notices/htslider/ht-slider-upgradetopro-offer.png' />"
+        },
+        "close_by": "transient",
+        "dismissible": true,
+        "disable": false,
+        "priority": -1
+    },
+    {
+        "id": "htslider-notice-151124d",
+        "message": "🛍️ Black Friday Sale is LIVE! Get 30% OFF with Code BFCM24 – Don't Miss Out! <a href='https://hasthemes.com/plugins/wordpress-notification-bar-plugin/' target='_blank'>SAVE 30% NOW</a>",
+        "banner": {
+            "url": "https://hasthemes.com/plugins/wordpress-notification-bar-plugin/",
+            "image": "<img src='https://feed.hasthemes.com/notices/htslider/ht-slider-upgradetopro-offer.png' />"
+        },
+        "close_by": "transient",
+        "dismissible": true,
+        "disable": true,
+        "priority": -1
+    }
+]
