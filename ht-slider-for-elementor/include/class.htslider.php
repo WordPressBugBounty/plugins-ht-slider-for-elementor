@@ -29,8 +29,6 @@ final class HTSlider_Addons_Elementor {
         add_action('admin_head', [ $this, 'admin_menu_item_adjust'] );
         add_action('admin_head', [ $this, 'enqueue_admin_head_scripts'], 11 );
         
-        // Promotional Banner
-        add_action( 'admin_notices', [ $this, 'show_promotional_banner' ] );
     }
     public function i18n() {
         load_plugin_textdomain( 'ht-slider' );
@@ -50,6 +48,9 @@ final class HTSlider_Addons_Elementor {
 
         // Plugins Required File
         $this->includes();
+
+        // Promotional Banner
+        add_action( 'admin_notices', [ $this, 'show_promotional_banner' ] );
 
         // Check for required PHP version
         if ( version_compare( PHP_VERSION, self::MINIMUM_PHP_VERSION, '<' ) ) {
