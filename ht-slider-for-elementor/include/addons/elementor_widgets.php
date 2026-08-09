@@ -1067,17 +1067,63 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
 
     }
 
+    /**
+     * Slide post IDs a slider instance would query, given its (fully merged)
+     * widget settings. Shared by render() and by the atomic-widget CSS
+     * pre-registration pass in HTSlider_Addons_Elementor, which needs the
+     * same IDs before render() ever runs. See get_slide_post_ids() callers.
+     */
+    public static function get_slide_post_ids( $settings ) {
+        $args = array(
+            'post_type'      => 'htslider_slider',
+            'posts_per_page' => $settings['slider_limit'],
+            'post_status'    => 'publish',
+            'order'          => $settings['postorder'],
+            'fields'         => 'ids',
+        );
+
+        // Fetch By id
+        if ( $settings['slider_show_by'] == 'show_byid' ) {
+            $args['post__in'] = $settings['slider_id'];
+        }
+
+        // Fetch by category
+        if ( $settings['slider_show_by'] == 'show_bycat' ) {
+            // By Category
+            $get_slider_categories = $settings['slider_cat'];
+            $slider_cats = str_replace( ' ', '', $get_slider_categories );
+            if ( "0" != $get_slider_categories ) {
+                if ( is_array( $slider_cats ) && count( $slider_cats ) > 0 ) {
+                    $field_name = is_numeric( $slider_cats[0] ) ? 'term_id' : 'slug';
+                    $args['tax_query'] = array(
+                        array(
+                            'taxonomy' => 'htslider_category',
+                            'terms' => $slider_cats,
+                            'field' => $field_name,
+                            'include_children' => false
+                        )
+                    );
+                }
+            }
+        }
+        // Exclude slides check
+        if ( ! empty( $settings['exclude_slides'] ) ) {
+            $exclude_slides = sanitize_text_field( $settings['exclude_slides'] );
+            $args['post__not_in'] = explode( ',', $exclude_slides );
+        }
+
+        return get_posts( $args );
+    }
+
     protected function render( $instance = [] ) {
 
         $settings   = $this->get_settings_for_display();
-        $exclude_slides = $settings['exclude_slides'];
-        $postorder  = $settings['postorder'];
         $id = $this->get_id();
         $args = array(
             'post_type'             => 'htslider_slider',
             'posts_per_page'        => $settings['slider_limit'],
             'post_status'           => 'publish',
-            'order'                 => $postorder,
+            'order'                 => $settings['postorder'],
         );
 
         // Fetch By id
@@ -1105,8 +1151,8 @@ class Htslider_Elementor_Widget_Sliders extends Widget_Base {
             }
         }
         // Exclude slides check
-        if (  !empty( $exclude_slides ) ) {
-            $exclude_slides = sanitize_text_field( $exclude_slides );
+        if (  !empty( $settings['exclude_slides'] ) ) {
+            $exclude_slides = sanitize_text_field( $settings['exclude_slides'] );
 
             $exclude_slides = explode( ',', $exclude_slides );
             $args['post__not_in'] =  $exclude_slides;

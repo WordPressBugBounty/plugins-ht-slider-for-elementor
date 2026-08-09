@@ -22,6 +22,10 @@ final class HTSlider_Addons_Elementor {
         add_filter( 'single_template', [ $this,'htslider_canvas_template'] );
         add_action('wp_enqueue_scripts', [ $this,'htslider_theme_assets'] );
 
+        // Elementor only generates atomic-widget CSS for the main queried post; register
+        // this page's slider slides before that one-shot pass so their atomic styles aren't skipped.
+        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_atomic_styles_for_slider_slides' ], 15 );
+
         // Elementor Editor Style
         add_action( 'elementor/editor/after_enqueue_styles', [ $this, 'elementor_editor_css' ] );
         // Upgrade Pro Menu
@@ -209,6 +213,75 @@ final class HTSlider_Addons_Elementor {
     public function htslider_theme_assets(){
         self::plugin_css();
         self::plugin_js();
+    }
+
+    /**
+     * Register slide post IDs used by any HT Slider widget on the current page
+     * with Elementor's atomic-widget CSS pipeline before its own single per-request
+     * enqueue pass runs (Frontend::enqueue_styles(), hooked at wp_enqueue_scripts
+     * priority 20). That pass only registers is_singular()'s queried post, so a
+     * slide rendered via the slider widget never gets its atomic CSS generated
+     * unless we register it here first.
+     */
+    public function enqueue_atomic_styles_for_slider_slides() {
+        if ( is_admin() || ! class_exists( '\Elementor\Plugin' ) ) {
+            return;
+        }
+
+        $slide_ids = $this->get_active_slider_slide_ids();
+        if ( empty( $slide_ids ) ) {
+            return;
+        }
+
+        foreach ( $slide_ids as $slide_id ) {
+            do_action( 'elementor/post/render', $slide_id );
+        }
+
+        \Elementor\Plugin::instance()->frontend->enqueue_styles();
+    }
+
+    /**
+     * Slide post IDs any HT: Slider widget on the current singular page would render.
+     */
+    private function get_active_slider_slide_ids() {
+        if ( ! is_singular() ) {
+            return [];
+        }
+
+        $post_id = get_the_ID();
+        if ( ! $post_id ) {
+            return [];
+        }
+
+        $document = \Elementor\Plugin::instance()->documents->get( $post_id );
+        if ( ! $document || ! $document->is_built_with_elementor() ) {
+            return [];
+        }
+
+        $slide_ids = [];
+
+        \Elementor\Plugin::instance()->documents->switch_to_document( $document );
+        foreach ( (array) $document->get_elements_data() as $element_data ) {
+            $this->collect_slider_widget_slide_ids( $element_data, $slide_ids );
+        }
+        \Elementor\Plugin::instance()->documents->restore_document();
+
+        return array_unique( $slide_ids );
+    }
+
+    private function collect_slider_widget_slide_ids( $element_data, array &$slide_ids ) {
+        if ( 'widget' === ( $element_data['elType'] ?? '' ) && 'htslider-slider-addons' === ( $element_data['widgetType'] ?? '' ) ) {
+            $element_instance = \Elementor\Plugin::instance()->elements_manager->create_element_instance( $element_data );
+            if ( $element_instance ) {
+                $slide_ids = array_merge( $slide_ids, \Elementor\Htslider_Elementor_Widget_Sliders::get_slide_post_ids( $element_instance->get_settings_for_display() ) );
+            }
+        }
+
+        if ( ! empty( $element_data['elements'] ) ) {
+            foreach ( $element_data['elements'] as $child_element_data ) {
+                $this->collect_slider_widget_slide_ids( $child_element_data, $slide_ids );
+            }
+        }
     }
 
     public function plugin_css(){
