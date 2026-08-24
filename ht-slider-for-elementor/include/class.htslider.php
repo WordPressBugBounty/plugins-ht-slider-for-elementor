@@ -329,6 +329,10 @@ final class HTSlider_Addons_Elementor {
             require_once HTSLIDER_PL_INCLUDE. '/admin/class-notice-manager.php' ;
             require_once HTSLIDER_PL_INCLUDE. '/admin/class-notices.php' ;
         });
+        if ( is_admin() ) {
+            require_once HTSLIDER_PL_INCLUDE. '/admin/class-api.php' ;
+            require_once HTSLIDER_PL_INCLUDE. '/admin/class-dashboard-widget.php' ;
+        }
         require_once HTSLIDER_PL_INCLUDE. '/admin/template-library.php' ;
         require_once HTSLIDER_PL_INCLUDE.'/helpers_function.php';
         require_once HTSLIDER_PL_INCLUDE.'/custom-post-type.php';
